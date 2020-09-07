@@ -1,0 +1,254 @@
+﻿@model  List<WebUserListVM>
+    @{ 
+        IEnumerable<SelectListItem> drpcities = ViewBag.drpCities as IEnumerable<SelectListItem>;
+    }
+<aside class="filtre">
+    <form id="filterForm" @*action="/WebUserList/Index"*@ class="giris-form form-i">
+        @*<div class="Cerceve">
+                <div class="form-group">
+                    <label for="">Oyuncu Ad/Soyad</label>
+                    <input type="search" class="form-control form-a" id="" aria-describedby="" placeholder="Ad Soyad">
+                </div>
+                <div class="form-group"><button type="submit" class="form-b">Ara</button></div>
+            </div>*@
+
+
+        <div class="Cerceve">
+            <!--Ajansa bağlı mı-->
+            <label style="margin-top:1rem;" for="" class="Oyunculuk">Ajansa Bağlı</label>
+            <div class="form-group">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="" name="ajans" class="custom-control-input">
+                    <label class="custom-control-label" for="">Evet</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="" name="ajans" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="">Hayır</label>
+                </div>
+            </div>
+            <!-- Oyunculuk Eğitimi -->
+            @*<label style="margin-top:1rem;" for="" class="Oyunculuk">Oyunculuk eğitimi</label>
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="egitimli" name="egitim" value="yes" class="custom-control-input">
+                        <label class="custom-control-label" for="egitimli">Eğitimli</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="egitimsiz" name="egitim" value="no" class="custom-control-input">
+                        <label class="custom-control-label" for="egitimsiz">Eğitimsiz</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="eg-farketmez" name="egitim" value="notMatter" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="eg-farketmez">Farketmez</label>
+                    </div>
+                </div>*@
+            <!-- Oyunculuk Türü -->
+            <label for="" class="Oyunculuk">Oyuncu türü</label>
+            <div class="form-group">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="yetiskin" value="yetiskin" name="oyuncu_tur" class="custom-control-input">
+                    <label class="custom-control-label" for="yetiskin">Yetişkin</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cocuk" name="oyuncu_tur" value="cocuk" class="custom-control-input">
+                    <label class="custom-control-label" for="cocuk">Çocuk</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="tur-farketmez" value="farketmez" name="oyuncu_tur" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="tur-farketmez">Farketmez</label>
+                </div>
+            </div>
+            <!-- Oyuncu türü -->
+            <label for="" class="Oyunculuk">Cinsiyet</label>
+            <div class="form-group">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="kadin" value="kadın" name="cinsiyet" class="custom-control-input">
+                    <label class="custom-control-label" for="kadin">Kadın</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="erkek" name="cinsiyet" value="erkek" class="custom-control-input">
+                    <label class="custom-control-label" for="erkek">Erkek</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cins-farketmez" name="cinsiyet" value="farketmez" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="cins-farketmez">Farketmez</label>
+                </div>
+            </div>
+        </div>
+        <div class="Cerceve">
+            <!-- Yaşadığı Şehir -->
+            <div class="form-group">
+                <label for="">Yaşadığı şehir</label>
+                @Html.DropDownList("sehir", drpcities,"Farketmez",new {@class="custom-select form-a form-j" })
+            </div>
+        </div>
+        <div class="Cerceve">
+            <!-- Yabancı Dil -->
+            <div class="form-group">
+                <label for="">Yabancı Dil</label>
+                <select name="dil" class="custom-select form-a form-h" multiple>
+                    <option value="0">Farketmez</option>
+                    <option value="1">Almanca</option>
+                    <option value="2">Arapça</option>
+                    <option value="3">Arnavutça</option>
+                    <option value="4">Azerice</option>
+                    <option value="5">Boşnakça</option>
+                    <option value="6">Bulgarca</option>
+                    <option value="7">Çince</option>
+                    <option value="8">Ermenice</option>
+                    <option value="9">Farça</option>
+                    <option value="10">Flemenkçe</option>
+                    <option value="11">Fransızca</option>
+                    <option value="12">İngilizce</option>
+                    <option value="13">İspanyolca</option>
+                    <option value="14">İtalyanca</option>
+                    <option value="15">Japonca</option>
+                    <option value="16">Kürtçe</option>
+                    <option value="17">Latince</option>
+                    <option value="18">Makedonca</option>
+                    <option value="19">Portekizce</option>
+                    <option value="20">Rumca</option>
+                    <option value="21">Rusça</option>
+                    <option value="22">Tatarca</option>
+                    <option value="23">Yunanca</option>
+                    <option value="24">Zazaca</option>
+                    <option value="25">Diğer</option>
+
+                </select>
+                <label>Birden faza dil seçebilirsiniz</label>
+            </div>
+        </div>
+        <div class="Cerceve">
+            <!-- Yaş -->
+            <div class="form-group">
+                <label for="">YAŞ ARALIĞI</label>
+                <div id="yasC"></div>
+                <label id="yasB"></label>
+                <input type="hidden" value="" id="yasHidden" name="yas" />
+                <script>
+                    var nonLinearStepSlider = document.getElementById('yasC');
+
+                    noUiSlider.create(nonLinearStepSlider, {
+                        start: [18, 80],
+                        connect: [false, true, false],
+                        step: 1,
+                        format: wNumb({
+                            decimals: 0
+                        }),
+                        range: {
+                            'min': [0],
+                            'max': [100]
+                        }
+                    });
+
+                    var yasA = document.getElementById('yasB');
+                    nonLinearStepSlider.noUiSlider.on('update', function (values) {
+
+                        yasA.innerHTML = values.join(' - ');
+                        $('#yasHidden').val(values)
+                    });
+                </script>
+            </div>
+            <!-- Boy -->
+            <div class="form-group">
+                <label for="">BOY ARALIĞI</label>
+                <div id="boy"></div>
+                <label id="boyB"></label>
+                <input type="hidden" id="boyHidden" name="boy" value="" />
+                <script>
+                    var nonLinearStepSlider = document.getElementById('boy');
+
+                    noUiSlider.create(nonLinearStepSlider, {
+
+                        start: [100, 190],
+                        connect: [false, true, false],
+                        step: 1,
+                        tooltips: false,
+                        format: wNumb({
+                            decimals: 0
+                        }),
+                        range: {
+                            'min': [50],
+                            'max': [210]
+                        }
+                    });
+
+                    var boyA = document.getElementById('boyB');
+                    nonLinearStepSlider.noUiSlider.on('update', function (values) {
+
+                        boyA.innerHTML = values.join(' - ');
+                        $('#boyHidden').val(values)
+                    });
+                </script>
+            </div>
+            <!-- Kilo -->
+            <div class="form-group">
+                <label for="">KİLO ARALIĞI</label>
+                <div id="kilo"></div>
+                <label id="kiloB"></label>
+                <input type="hidden" value="" name="kilo" id="kiloHidden" />
+                <script>
+                    var nonLinearStepSlider = document.getElementById('kilo');
+
+                    noUiSlider.create(nonLinearStepSlider, {
+                        start: [40, 120],
+                        connect: [false, true, false],
+                        step: 1,
+                        format: wNumb({
+                            decimals: 0
+                        }),
+                        range: {
+                            'min': [5],
+                            'max': [300]
+                        }
+                    });
+
+                    var kiloA = document.getElementById('kiloB');
+                    nonLinearStepSlider.noUiSlider.on('update', function (values) {
+                        kiloA.innerHTML = values.join(' - ');
+                        $('#kiloHidden').val(values)
+                    });
+                </script>
+            </div>
+        </div>
+
+
+        <!-- detaylı ara -->
+        <button type="submit" id="submitFilter" class="form-b">Detaylı ara</button>
+    </form>
+</aside>
+
+
+
+<script>
+    $('#filterForm').submit(function (e) {        
+        e.preventDefault();
+        $('#preloader').show();
+        $.ajax({
+            url: '/WebUserList/FilterUsers',
+            data: $('#filterForm').serializeArray(),
+            type: 'POST',
+            success: function (result) {
+                
+                setTimeout(function () {
+                    
+                    $('#userList').html(" ");
+                    if (result != "") {
+                        $('#userList').html(result);
+                    }
+                    else {
+                        $('#userList').html('<div class="alert alert-danger" style="width:100%;margin-top:300px;"> <center>Aradığınız kriterlerde  oyuncu bulunamadı.</center></div>')
+                    }
+
+                    $("html,body").stop().animate({ scrollTop: "0" }, 1000);
+                    $('#preloader').hide();
+                },1000)
+                
+            },
+            error: function (err) {
+                
+            }
+        })
+    })
+</script>
+

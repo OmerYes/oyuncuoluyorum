@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Oyuncu Olmak İstiyorum";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model HomeVM
+
+<div class="giris">
+    <h1>Oyuncu mu olmak istiyorsun?</h1><h5>Fotoğraf, Video, Özgeçmiş ekle. Yapımcıların dikkatini çek.</h5>
+    <div class="yellow"><a href="/oyuncu-olmak-istiyorum/Kayıt" class="uyeol">HEMEN ÜCRETSİZ ÜYE OL</a><a href="/oyuncu-olmak-istiyorum/Giris" class="girisyap">GİRİŞ YAP</a></div>
+</div>
+<section class="s-gri">
+    <div class="baslik-a"><h2>Profesyonel dünyaya adım at.</h2><h5>Profilinizi yönetmenler, cast direktörleri, yapımcılar izlesin</h5></div>
+    <div class="flex-4">
+        <div class="one"><span></span><h5>ÜYE OL</h5></div>
+        <div class="two"><span></span><h5>KENDİNİ<br>ANLAT</h5></div>
+        <div class="three"><span></span><h5>PROFİLİN <br>İNCELENSİN</h5></div>
+        <div class="four"><span></span><h5>YILDIZ OL</h5></div>
+    </div>
+</section>
+@Html.Partial("Partial/ProjectList", Model)
+@Html.Partial("Partial/OpportunitiesList", Model)
+<section>
+    <div class="flex-3">
+        <a style="color:#4c4c4c;" class="spectator" href="/oyuncu-olmak-istiyorum/Kayıt">
+            <div class="foto-5"><div><span></span><h4>Seyirci ol</h4><p>Tv programlarına seyirci olarak katılmak için kayıt ol.</p></div></div>
+        </a>
+        <a style="color:#4c4c4c;" class="spectator" href="/oyuncu-olmak-istiyorum/Kayıt">
+            <div class="adv-face foto-6"><div><span></span><h4>Reklam yüzü ol</h4><p>Yıldızını parlatmak ve firmaların reklam yüzü olmak için kayıt ol.</p></div></div>
+        </a>
+        <a style="color:#4c4c4c;" class="spectator" href="/oyuncu-olmak-istiyorum/Kayıt">
+            <div class="entrant foto-7"><div><span></span><h4>Yarışmacı ol</h4><p>Yarışma programlarına yarışmacı olarak katılmak için kayıt ol.</p></div></div></a>
+    </div>
+</section>

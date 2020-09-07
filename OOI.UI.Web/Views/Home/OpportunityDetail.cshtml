@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Fırsat-Kampanya";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+@model HomeVM
+
+<div class="giris form-f">
+    <h4>498 Cast Ajansı ve 784 Cast Direktörü ile buluşun.</h4>
+</div>
+<div class="aside-blog">
+
+
+
+    <div class="yazi-detay" style="margin-top:">
+
+        <div class="d-lg-flex d-sm-block flex-row justify-content-between">
+            <div class=" d-md-block d-sm-block">
+
+                <div class="row" style="margin-top:10px">
+                    <div class="column">
+                        <img style="height:100px; width:200px" class="demo cursor" src="~/Areas/Admin/Content/Opportunity/MainPhoto/@Model.Opportunity.MainPhoto" alt="Bazzer">
+                    </div>
+
+                </div>
+            </div>
+            <div class="pd-title">
+                <h2>Fırsat Detayı</h2>
+                <div class="">
+                    <label for="" class="d-block">Fırsat Adı</label>
+                    <span>@Model.Opportunity.Name</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Açıklama</label>
+                    <span>@Model.Opportunity.Description</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Başlangıç Tarihi</label>
+                    <span>@Model.Opportunity.StartDateString</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Bitiş Tarihi</label>
+                    <span>@Model.Opportunity.StartDateString</span>
+                </div>
+                <div class="d-inline-block">
+                    <button class=" btnBasvur float-right btnprojectdetail" id="">Başvur</button>
+                </div>
+            </div>
+        </div>
+
+        <p>@Model.Opportunity.Description</p>
+
+
+        <div class="sosyal-blog-b"><span>Admin</span><span> - </span><span>27/07/2012</span><a href="#" class="face"></a><a href="#" class="youtube"></a><a href="#" class="ins"></a><a href="#" class="twit"></a></div>
+
+    </div>
+
+    <aside>
+
+        <div class="SameProjects">
+            <h3>Benzer Fırsatlar</h3>
+
+
+            @foreach (var item in Model.Opportunities)
+            {
+                if (item.ID != Model.Opportunity.ID)
+                {
+                    <a href="#" class="yazi">
+                        <div class="yazi-foto ">
+                            <img style="height:100px; width:100px" class="demo cursor" src="~/Areas/Admin/Content/Opportunity/MainPhoto/@item.MainPhoto" alt="Bazzer">
+                        </div>
+                        <div class="yazi-a">
+                            <h5>@item.Name</h5>
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </a>
+                }
+            }
+
+
+
+
+            <div class="liste-b"><a href="#">Tüm Fırsatlar <img src="/Content/svg/sari-ok-sag.svg" alt=""></a></div>
+        </div>
+
+    </aside>
+
+</div>
+
+

@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Proje Yönetim Sayfası";
+
+}
+
+@model FirmProjectVM
+
+
+<h2>ManageProject</h2>
+
+
+
+<div class="container-fluid CompanyProjectBlock">
+    <center>
+
+        <div class="castingimg">
+            <img src="/Content/Projects/MainPhotos/@Model.Project.MainPhoto" />
+
+        </div>
+        <h2>@Model.Project.Title</h2>
+        <h5>@Model.Project.Description</h5>
+    </center>
+     
+    <hr />
+    <div class="purchases purchases-margins">
+        <h4>Eklenenler</h4>
+        <section class="adaylar filtre-a">
+
+            @foreach (var item in Model.ProjectUsers)
+            {
+                if (item.ProjectApplyCategoryID == 1)
+                {
+
+                    <div class="aday" id="aday_@item.ID">
+
+                        <div class="aday-d">
+                            @*<img src="~/Content/WebUser/MainPhotos/@item.MainPhoto" alt="Alternate Text" />*@
+                            <img src="~/Content/img/foto-8.jpg" alt="Alternate Text" />
+                            <div class="aday-isim">
+                                <h4>@item.Name</h4>
+                                <h5>@item.SurName</h5>
+
+                            </div>
+                            <div class="aday-bag">
+                                @*<a href="/WebUser/Detail/@item.ID" class="link"></a>
+                                *@
+                                @*<input type="submit" value="Oyuncuyu Çıkar" class="btn btn-danger" />*@
+                                <button class="btn btn-danger" id="btnCikar" value="@item.ID">Oyuncuyu Çıkar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            }
+
+        </section>
+    </div>
+
+    <div class="purchases purchases-margins">
+        <h4>Başvuranlar</h4>
+        <section class="adaylar filtre-a">
+
+            @foreach (var item in Model.ProjectUsers)
+            {
+                if (item.ProjectApplyCategoryID == 0)
+                {
+
+                    <div class="aday" id="aday_@item.ID">
+
+                        <div class="aday-d">
+                            @*<img src="~/Content/WebUser/MainPhotos/@item.MainPhoto" alt="Alternate Text" />*@
+                            <img src="~/Content/img/foto-8.jpg" alt="Alternate Text" />
+                            <div class="aday-isim">
+                                <h4>@item.Name</h4>
+                                <h5>@item.SurName</h5>
+
+                            </div>
+                            <div class="aday-bag">
+                                @*<a href="/WebUser/Detail/@item.ID" class="link"></a>
+                                *@
+                                @*<input type="submit" value="Oyuncuyu Çıkar" class="btn btn-danger" />*@
+                                <button class="btn btn-danger" id="btnCikar"  value="@item.ID">Oyuncuyu Çıkar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            }
+
+        </section>
+    </div>
+</div>
+
+<input type="hidden" value="@Model.Project.ID" id="ProjectID"/>
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var projeID = $('#ProjectID').val();
+            $('#btnCikar').click(function () {
+                
+                var userID = this.value;
+                $.ajax({
+                    url: '/FirmProjects/ExitProject',
+                    data: { ProjectID: projeID, WebUserID: userID },
+                    type: 'POST',
+                    success: function (result) {
+                        
+                        if (result.Status == "1") {
+                            $('#aday_' + userID).fadeOut();
+                        }
+                    },
+                    error: function (result) {
+                        
+                        alert("başarısız")
+                    }
+
+
+                })
+            })
+        })
+    </script>
+    }
+
+
+
+
+
+

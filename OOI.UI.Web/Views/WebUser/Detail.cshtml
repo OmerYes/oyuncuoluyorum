@@ -1,0 +1,367 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Oyuncu Detay";
+                Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@{
+    int sayac = 2;
+}
+@model WebUserGetVM
+<div class="oyuncudetay container d-flex flex-column justify-content-center">
+    <div class="container d-flex flex-row">
+        <div class="Slidescontainer1">
+            <div class="ProjectSlides1">
+                <img src="/Content/WebUser/MainPhotos/@Model.ProfilePhoto" />
+            </div>
+            @foreach (var item in Model.UserPhotos)
+            {
+                <div class="ProjectSlides1">
+                    <img src="/Content/WebUser/Photos/@item.Path" alt="">
+                </div>
+            }
+
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+            <div class="row" style="margin-top:10px">
+                <div class="column">
+                    <img class="demo cursor" src="/Content/WebUser/MainPhotos/@Model.ProfilePhoto" onclick="currentSlide(1)" alt="Bazzer">
+                </div>
+
+                @foreach (var item in Model.UserPhotos)
+                {
+                    <div class="column">
+                        <img class="demo cursor" src="/Content/WebUser/Photos/@item.Path" onclick="currentSlide(@sayac)" alt="Altered carbon">
+                    </div>
+                    {
+                        sayac++;
+
+                    }
+                }
+
+
+            </div>
+        </div>
+        <div class="oyuncudetayİnfo">
+            <div class="col-12">
+                <label for="">Ajansa Bağlı mı ?</label>
+                <br>
+                @if (Model.IsRegisteredAagency)
+                {
+                    <span>Bağlı</span>
+                }
+                else
+                {
+                    <span>Bağlı Değil</span>
+                }
+
+            </div>
+            <div class="col-12">
+                <label for="">Ad</label>
+                <br>
+                <span>@Model.Name</span>
+            </div>
+            @*<div class="col-12">
+                <label for="">Soyad</label>
+                <br>
+                <span>@Model.LastName</span>
+            </div>*@
+            @*<div class="col-12">
+                <label for="">Email</label>
+                <br>
+                <span>@Model.Email</span>
+            </div>*@
+            @*<div class="col-12">
+                <label for="">Cep Telefonu</label>
+                <br>
+                <span>@Model.Phone </span>
+            </div>*@
+            <div class="col-12">
+                <label for="">Doğum Tarihi</label>
+                <br>
+                <span>@Model.BirthDate.Value.Year</span>
+            </div>
+            <div class="col-12">
+                <label for="">Üniversite</label>
+                <br>
+                <span>@Model.University</span>
+            </div>
+            <div class="col-12">
+                <label for="">Bölüm</label>
+                <br>
+                <span>@Model.Branch</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="oyuncudetay-Size row">
+        <div class="col-12">
+            <span>Vücüt Özellikleri</span>
+        </div>
+        <div class="col-4">
+            <label for="">Vücut Ölçüleri</label>
+            <br>
+            <span>@Model.BodySize</span>
+        </div>
+        <div class="col-4">
+            <label for="">Boy</label>
+            <br>
+            <span>@Model.Height</span>
+        </div>
+        <div class="col-4">
+            <label for="">Kilo</label>
+            <br>
+            <span>@Model.Weight</span>
+        </div>
+        <div class="col-4">
+            <label for="">Giysi Ölçüleri</label>
+            <br>
+            <span>@Model.DressSize</span>
+        </div>
+        <div class="col-4">
+            <label for="">Ten Rengi</label>
+            <br>
+            <span>@Model.SkinColor</span>
+        </div>
+        <div class="col-4">
+            <label for="">Saç Tipi</label>
+            <br>
+            <span>@Model.HairStyle</span>
+        </div>
+        <div class="col-4">
+            <label for="">Saç Rengi</label>
+            <br>
+            <span>@Model.HairColor</span>
+        </div>
+        <div class="col-4">
+            <label for="">Göz Rengi</label>
+            <br>
+            <span>@Model.EyeColor</span>
+        </div>
+        <div class="col-4">
+            <label for="">Ayakkabı Numarası</label>
+            <br>
+            <span>@Model.ShoeSize</span>
+        </div>
+    </div>
+    <div class="oyuncudetay-Size row">
+        <div class="col-12">
+            <span>Kişi Tecrübeleri</span>
+        </div>
+        <div class="col-4">
+            <label for="">Pozisyon</label>
+            <br>
+            <span>Yardımcı Oyuncu</span>
+        </div>
+        <div class="col-4">
+            <label for="">Firma Adı</label>
+            <br>
+            <span>Yıldızlar</span>
+        </div>
+        <div class="col-4">
+            <label for="">Şehir</label>
+            <br>
+            <span>İstanbul</span>
+        </div>
+        <div class="col-4">
+            <label for="">Firma Sektörü</label>
+            <br>
+            <span>Cast</span>
+        </div>
+        <div class="col-4">
+            <label for="">Başlangıç Tarihi</label>
+            <br>
+            <span>12.09.2019</span>
+        </div>
+        <div class="col-4">
+            <label for="">Bitiş Tarihi</label>
+            <br>
+            <span>12.09.2021</span>
+        </div>
+        <div class="col-4">
+            <label for="">Çalışma Şekli</label>
+            <br>
+            <span>Tam Zamanlı</span>
+        </div>
+        <div class="col-4">
+            <label for="">İş Alanı</label>
+            <br>
+            <span>Prodüksiyon</span>
+        </div>
+        <div class="col-4">
+            <label for="">İş Tanımı</label>
+            <br>
+            <span>Oyuncu</span>
+        </div>
+    </div>
+    <div class="col-12 d-flex justify-content-end btnOyuncudetay">
+        <button id="ProjectApplyBtn" type="button" class="btn ">Projeye Ekle</button>
+    </div>
+
+    <div class="alert alert-danger" style="display:none" id="alertApply"></div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Bu oyuncuyu projeye eklemek istediğinize emin misiniz?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped" id="companyProjectTable"></table>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="modal-btn-si">Evet</button>
+                    <button type="button" class="btn btn-primary" id="modal-btn-no">Hayır</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert" role="alert" id="result"></div>
+</div>
+
+<div class="modal fade" id="projectapplyloginerror" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Projeye Ekle</p>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-sign-in-alt fa-4x animated rotateIn mb-4"></i>
+                <p></p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <a href="/oyuncu-olmak-istiyorum/Kayıt"><button type="button" class="btn btn-warning">Üye Ol!</button></a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<input type="hidden" id="WebUserID" value='@Url.RequestContext.RouteData.Values["id"]' />
+
+@section scripts {
+    <script>
+        var modalConfirm = function (callback) {
+            var userid = $('#WebUserID').val();
+            $("#ProjectApplyBtn").on("click", function () {
+
+
+                $.ajax({ //  eklenecek oyuncu için seçilebilecek projelerin listelenmesi
+                    url: '/ProjectApply/CompanyProjects/' + userid,
+                    type: 'GET',
+                    success: function (veri) {
+
+                        if (veri.Status == '4') {
+                            $('#projectapplyloginerror').modal('show');
+                            $('#projectapplyloginerror .modal-body p').text(veri.Messages);
+                        }
+                        else {
+                            $("#mi-modal").modal('show');
+                            $('#companyProjectTable').html("")
+
+                            $.each(veri, function (index, value) {
+                                if (value.IsAdded) {
+                                    $('#companyProjectTable').append('<tr><td>' + value.Title + '</td><td>' + value.StartDateString + '</td><td><input type="checkbox" checked value="' + value.ProjectID + '"/></td></tr>')
+                                }
+                                else {
+                                    $('#companyProjectTable').append('<tr><td>' + value.Title + '</td><td>' + value.StartDateString + '</td><td><input type="checkbox" value="' + value.ProjectID + '"/></td></tr>')
+                                }
+                            })
+                        }
+
+                    }
+                })
+            });
+
+            $("#modal-btn-si").on("click", function () {
+                var projectid = [];
+                
+                $.each($("input[type=checkbox]:checked"), function () {
+                    projectid.push($(this).val());
+                });
+
+                $.ajax({
+                    url: '/ProjectApply/CompanyApply',
+                    type: 'POST',
+                    data: { ProjectIDs: projectid, WebUserID: userid },
+                    success: function (veri) {
+                        if (veri.Status == "1") {
+                            $('#ProjectApplyBtn').html(veri.Messages)
+                            $('#ProjectApplyBtn').removeClass('btn-warning');
+                            $('#ProjectApplyBtn').addClass('btn-success');
+                            $('#ProjectApplyBtn').css('border','none')
+                        }
+                        else if (veri.Status == 2) {
+                            $('#alertApply').show();
+                            $('#alertApply').html(veri.Messages)
+                            setTimeout(function () {
+                                $('#alertApply').hide();
+
+                            }, 3000)
+                        }
+                    }
+                })
+                $("#mi-modal").modal('hide');
+            });
+
+            $("#modal-btn-no").on("click", function () {
+                callback(false);
+                $("#mi-modal").modal('hide');
+            });
+        };
+
+        modalConfirm(function (confirm) {
+            if (confirm) {
+                //Acciones si el usuario confirma
+                //$("#result").html("CONFIRMADO");
+            } else {
+                //Acciones si el usuario no confirma
+                //$("#result").html("NO CONFIRMADO");
+            }
+        });
+    </script>
+
+}
+<script>
+
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("ProjectSlides1");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model OOI.UI.Web.Models.VM.WebUserGetVM
+
+
+
+<div class="CastOlusturma">
+    @if (TempData["IslemDurum"] != null && (EnumIslemDurum)TempData["IslemDurum"] == EnumIslemDurum.IslemBasarili)
+    {
+        <div id="updateInfo" class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+        </div>
+    }
+    @Html.Partial("Partial/UserInfo", Model)
+    @Html.Partial("Partial/UserPhotos", Model)
+    @Html.Partial("Partial/UserProperties", Model)
+    @Html.Partial("Partial/UserExperience", Model)
+</div>
+
+@section scripts{
+    <script>
+        setTimeout(function () {
+            $('#updateInfo').fadeOut();
+        }, 4000);
+    </script>
+    
+    }

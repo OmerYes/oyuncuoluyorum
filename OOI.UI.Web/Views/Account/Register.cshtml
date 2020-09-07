@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Kayıt";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model WebUserRegisterVM
+<script src="~/Scripts/mask/jquery.inputmask.bundle.js"></script>
+<div class="container-fluid">
+    <div class="d-flex flex-column">
+        <div class="kayit-headline">
+            <h1>Üye Kayıt</h1>
+        </div>
+
+
+        <div class="kayit d-flex justify-content-between">
+            <div class="kayit-a">
+                @if (ViewBag.IslemDurum == EnumIslemDurum.ValidationHata)
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationSummary()
+                    </div>
+                }
+
+                    <div class="alert alert-danger" id="sozlesmeError" style="display:none">
+                        Sözleşme onaylanmak zorundadır
+                    </div>
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "registerForm" }))
+                {
+                    <div class="form-group mb-2 d-flex kayit-radio-buttons">
+                        <div class="custom-control custom-radio custom-control-inline d-inline-block">
+                            <input type="radio" id="individual" name="registrationType" value="Oyuncu" checked="checked" class="custom-control-input">
+                            <label class="custom-control-label" for="individual">Oyuncu Üyelik</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline d-inline-block ml-4">
+                            <input type="radio" id="corporate" name="registrationType" value="Firma" class="custom-control-input">
+                            <label class="custom-control-label" for="corporate">
+                                Kurumsal Üyelik<a href="#" class="tipitip-trigger tipitip-icon" title="Emlak, vasıta, ürün alım satımı ile ilgili ticaret yapan kullanıcılarımızın Kurumsal Üye olması gereklidir.">
+                                </a>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="form-group kayit-a-label">
+                        <label for="">E-postanız</label>
+                        <input type="email" class="form-control form-a" id="" aria-describedby="" placeholder="" name="Email">
+                    </div>
+                    <div class="form-group kayit-a-label">
+                        <label for="">Telefon numaranız</label>
+                        <input type="tel" id="phone" class="form-control form-a" aria-describedby="" placeholder="" name="Phone">
+                    </div>
+                    <div class="form-group kayit-a-label">
+                        <label for="">Şifreniz</label>
+                        <input type="password" class="form-control form-a" id="" placeholder="" name="Password">
+                    </div>
+                    <div class="form-group kayit-a-label">
+                        <label for="">Şifre tekrar</label>
+                        <input type="password" class="form-control form-a" id="" placeholder="" name="ConfirmPassword">
+                    </div>
+                    <div class="custom-control custom-checkbox UyelikKayit">
+                        <input type="checkbox" class="custom-control-input" id="sozlesme" name="sozlesme">
+                        <label class="custom-control-label" for="sozlesme"><a style="color:#e6c20e;" href="~/Documents/Uyelik-Koşullari-ve-Gizlilik-Prensipleri.pdf" target="_blank">Üyelik Sözleşmesi</a> şartlarını okudum ve kabul ediyorum.</label>
+                    </div>
+                    <button type="submit" class="form-group form-b d-inline" id="gonder">Gönder</button>
+                }
+            </div>
+            <div class="kayit-sag d-none d-md-block">
+                @*<div class="kayit-sag-text mr-lg-5 mr-md-4 mt-md-3 mt-lg-4 d-flex flex-column justify-items-start">
+                        <div class="d-flex justify-items-between px-lg-5 px-md-3 pt-lg-5 pt-md-3">
+                            <img src="~/Content/img/favicon.ico" alt="" class="kayit-sag-image d-none d-lg-block">
+                            <h4 class="mb-1 golden-base golden">Oyuncu Üyeliği</h4>
+                        </div>
+                        <p class="mt-3 px-lg-4 px-md-4 kayit-sag-p">Lorem ipsum dolor amet sit elit qui consectetur adipisicing elit. Facere qui vitae incidunt. Atque, distinctio nisi.</p>
+                        <ul>
+                            <li class="px-lg-4 px-md-3">Lorem ipsum dolor sit amet</li>
+                            <li class="px-lg-4 px-md-3">Lorem ipsum dolor sit amet</li>
+                            <li class="px-lg-4 px-md-3">Lorem ipsum, dolor sit amet</li>
+                        </ul>
+                        <p class="mt-3 px-lg-4 px-md-4 kayit-sag-p">Lorem ipsum dolor amet sit elit qui consectetur adipisicing elit. Facere qui vitae incidunt. Atque, distinctio nisi.</p>
+                    </div>*@
+                <div class="img-fluid uyelikimage">
+                    <img src="~/Content/img/foto-10.jpg" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+
+        $('#gonder').click(function (e) {
+            e.preventDefault();
+            if ($('#sozlesme').prop('checked')) {
+                $('#registerForm').submit();
+            }
+            else {
+                $('#sozlesmeError').show();
+            }
+        })
+
+
+        $("#phone").inputmask({ "mask": "(999) 999-9999" });
+    </script>
+

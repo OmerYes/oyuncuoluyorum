@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Proje Listesi";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model List<ProjectVM>
+
+
+<div class="giris form-f">
+    <h4>@ViewBag.Title</h4>
+</div>
+<div>
+    <div class="baslıkcontainer">
+        <div class="baslık star foto-16"></div>
+        <div class="baslık"><span id="ww">Projeler</span></div>
+        <div class="baslık star foto-16"></div>
+    </div>
+</div>
+<section class="CastListesi-container justify-content-start">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="CastListesi ">
+                <div class="fotograf"><img src="~/Content/Projects/MainPhotos/@item.MainPhoto" alt="Alternate Text" /></div>
+                <div class="CastName">
+                    <span>@item.Title</span>
+                </div>
+                <div class="CastCommon CastDescription">
+                    <span>@item.Description</span>
+                </div>
+                <hr>
+                <div class="CastCommon CastFdate">
+                    <span>Firma:</span>
+                    <span>@item.FirmName</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastCommon CastCategory">
+                    <span>Kategori:</span>
+                    <span>@item.CategoryName</span>
+                </div>
+                @* <div class="CastListesi-hr"><hr></div>
+                    <div class="CastCommon CastSdate">
+                        <span>Başlangıç Tarihi:</span>
+                        <span>@item.StartDateString</span>
+                    </div>*@
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastCommon CastFdate">
+                    <span>Bitiş Tarihi:</span>
+                    <span>@item.EndDateString</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastButondiv">
+                    @if (ViewBag.LoginCategory == EnumLoginCategory.UserLogin)
+                    {
+                        if (!item.ApplyStatus)
+                        {
+                            <button class="CastButon btnBasvur" id="@item.ID">Başvur</button>
+                        }
+                        else
+                        {
+                            <button class="CastButon" id="@item.ID">Başvuruldu</button>
+                        }
+                    }
+
+                    @*@if (ViewBag.LoginCategory == EnumLoginCategory.CompanyLogin)
+        {*@
+                    <button class="ButtonDetay" id="@item.ID"><a href="/SiteProject/ProjectDetail/@item.ID">Detay</a></button>
+                    @*}*@
+
+                </div>
+            </div>
+        </div>
+    }
+</section>
+@Html.Partial("Partial/ProjectApplyModal")
+
+<script>
+    var id = 0;
+    $(".btnBasvur").click(function () {
+        $('#projectapplymodal').modal('show');
+        id = $(this).attr("id");
+
+    })
+
+    $(".projectapply").click(function () {
+
+        $.ajax({
+            url: "/ProjectApply/Apply/" + id,
+            type: "POST",
+            success: function (result) {
+                $('#projectapplymodal').modal('hide');
+
+                if (result.Status == "1") {
+                    $('#projectapplysuccessmodal').modal('show');
+                    $('#projectapplysuccessmodal .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "2") {
+                    $('#projectapplyold').modal('show');
+                    $('#projectapplyold .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "3") {
+                    $('#projectapplycreditserror').modal('show');
+                    $('#projectapplycreditserror .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "4") {
+                    $('#projectapplyloginerror').modal('show');
+                    $('#projectapplyloginerror .modal-body p').text(result.Messages);
+                }
+
+            }
+        })
+    })
+</script>
+
+
+
+
+

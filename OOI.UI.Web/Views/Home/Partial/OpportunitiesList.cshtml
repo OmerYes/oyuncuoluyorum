@@ -1,0 +1,54 @@
+﻿@model HomeVM
+<section class="s-sari-gri">
+    <div class="flex-2">
+        <div class="firsat">
+            <div class="firsat-a"><img src="/Content/svg/firsatlar.svg"></div>
+            <div class="firsat-b">
+
+                @foreach (var item in Model.Opportunities)
+                {
+
+                    <div>
+                        <a href="/Home/firsat-kampanya/@item.ID">
+                            
+                            <div class="firsat-foto" style=" background:no-repeat center center; background-size:cover"><img style="width:100px;height:100px" src="~/Areas/Admin/Content/Opportunity/MainPhoto/@item.MainPhoto" alt="" /></div>
+
+                            <h4>@item.Name</h4>
+                            <p>
+                                @item.Description
+                            </p>
+
+                            @*<a href="/Home/OpportunityDetail/@item.ID" class="detay">Detay</a>*@
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="roportaj">
+            <div class="roportaj-a"><img src="/Content/svg/roportajlar.svg" alt=""></div>
+            <div class="roportaj-b">
+
+
+                @foreach (var item in Model.Interviews)
+                {
+                    <div class="d-flex" style="margin-top:10px;">
+                        <a href="/Home/Roportaj-Soylesi/@item.ID">
+                            
+                            <div class="firsat-foto" style=" background:no-repeat center center; background-size:cover"><img style="width:100px;height:100px" src="~/Areas/Admin/Content/Interview/MainPhoto/@item.MainPhoto" alt="" /></div>
+                            <div>
+                                <h4>@item.Name</h4>
+                                <p>
+                                    @item.Description
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    @*<a href="/Home/InterviewDetail/@item.ID" class="detay">Detay</a>*@
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+</section>

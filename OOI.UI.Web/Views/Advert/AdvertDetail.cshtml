@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "AdvertDetail";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model AdvertDetailVM
+
+@{
+    int sayac = 2;
+}
+
+
+<div class="giris form-f">
+    <h4>498 Cast Ajansı ve 784 Cast Direktörü ile buluşun.</h4>
+</div>
+<div class="aside-blog">
+    <section class="yazi-detay">
+
+        <div class="d-lg-flex d-sm-block flex-row justify-content-between">
+            <div class="Slidescontainer d-md-block d-sm-block">
+
+                <div class="ProjectSlides">
+                    <img src="~/Content/Advert/MainPhotos/@Model.MainPhoto" alt="">
+                </div>
+
+                @foreach (var item in Model.AdvertPhotos)
+                {
+                    <div class="ProjectSlides">
+                        <img src="~/Content/Advert/MainPhotos/@item.Path" alt="">
+                    </div>
+                }
+
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <div class="row" style="margin-top:10px">
+                    <div class="column">
+                        <img class="demo cursor" src="~/Content/Advert/MainPhotos/" onclick="currentSlide(1)" alt="Bazzer">
+                    </div>
+                    @foreach (var item in Model.AdvertPhotos)
+                    {
+                        <div class="column">
+                            <img class="demo cursor" src="~/Content/Advert/Photos/" onclick="currentSlide(@sayac)" alt="Altered carbon">
+                        </div>
+                        {
+                            sayac++;
+
+                        }
+                    }
+                </div>
+            </div>
+            <div class="pd-title">
+                <h2>İlan Adı</h2>
+                <div class="">
+                    <label for="" class="d-block">İlan Adı</label>
+                    <span>@Model.Name</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Kategori</label>
+                    <span>@Model.CategoryName</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Oluşturulma Tarihi</label>
+                    <span>@Model.CreatedDate</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Telefon</label>
+                    <span>@Model.AdvertPhone</span>
+                </div>
+
+
+            </div>
+        </div>
+
+        <label for="" class="d-block" style="
+    font-weight: bold;
+">İlan Açıklama</label>
+        <p>@Model.Description</p>
+
+
+    </section>
+
+
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("ProjectSlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+<script>
+    var id = 0;
+    $(".btnBasvur").click(function () {
+        $('#projectapplymodal').modal('show');
+        id = $(this).attr("id");
+
+    })
+
+    $(".projectapply").click(function () {
+
+        $.ajax({
+            url: "/ProjectApply/Apply/" + id,
+            type: "POST",
+            success: function (result) {
+                $('#projectapplymodal').modal('hide');
+
+                if (result.Status == "1") {
+                    $('#projectapplysuccessmodal').modal('show');
+                    $('#projectapplysuccessmodal .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "2") {
+                    $('#projectapplyold').modal('show');
+                    $('#projectapplyold .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "3") {
+                    $('#projectapplycreditserror').modal('show');
+                    $('#projectapplycreditserror .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "4") {
+                    $('#projectapplyloginerror').modal('show');
+                    $('#projectapplyloginerror .modal-body p').text(result.Messages);
+                }
+
+            }
+        })
+    })
+</script>
+
+

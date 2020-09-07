@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model List<ProjectVM>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<div class="CastOlusturma">
+    <div class="CastOlusturma-a">
+        <div class="ListeTitle">
+            <span>Firma Projeleri</span>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="CastPhotoBlock CastDetayBlock">
+                <div class="CastPhotoList">
+                    <div class="PhotoId1 Photo_genID" style="" onclick="triggeruploadimg(this,'out');"><img id="onizleme" width="100%" height=auto></div>
+
+                </div>
+                <div class="CastDetay">
+                    <div class="col-md-3 CastKategori">
+                        <label for="" style="font-weight: bold">Kategori</label>
+                        <span value="" style="display: block">@item.CategoryName</span>
+                    </div>
+                    <div class="col-md-3 CastAdı">
+                        <label for="" style="font-weight: bold">Ad</label>
+                        <span value="" style="display: block">@item.Title</span>
+                    </div>
+                    <div class="col-md-3 CastTarih">
+                        <label for="" style="font-weight: bold">Başlangıç Tarihi</label>
+                        <span value="" style="display: block">@item.StartDateString</span>
+                    </div>
+                    <div class="col-md-3 CastBitis">
+                        <label for="" style="font-weight: bold">Bitiş Tarihi</label>
+                        <span value="" style="display: block">@item.EndDateString</span>
+                    </div>
+                    <div class="col-md-3 CastAcıklama">
+                        <label for="" style="font-weight: bold">Açıklama</label>
+                        <span value="" style="display: block">@item.Description</span>
+                    </div>
+                    <input type="hidden" name="name" id="projectid" value="@item.ID" />
+                </div>
+
+                <div class="col-md-12 CastButton" id="btnbutton"><button class="btn btn-primary " id="btnBasvurListe" type="button">Başvur</button></div>
+            </div>
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "CategoryDetail";
+    Layout = "~/Areas/Admin/Views/Shared/AdminUserLayoutPage.cshtml";
+
+}
+
+@model OOI.UI.Web.Areas.Admin.Models.VM.ProjectCategoryVM
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Kategori Detayları</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @using (Html.BeginForm("CategoryDetail", "ProjectCategory", FormMethod.Get))
+                {
+                    <div class="form-group">
+                        <label>ID : </label>
+                        @Html.DisplayFor(x => x.ID, new { @type = "text", @class = "form-control", @id = "", @placeholder = "" })
+                    </div>
+                    <div class="form-group">
+                        <label>Başlık : </label>
+                        @Html.DisplayFor(x => x.Title, new { @type = "text", @class = "form-control", @id = "", @placeholder = "" })
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori Adı : </label>
+                        @Html.DisplayFor(x => x.Name, new { @type = "text", @class = "form-control", @id = "", @placeholder = "" })
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama : </label>
+                        @Html.DisplayFor(x => x.Description, new { @class = "form-control", @id = "", @placeholder = "" })
+                    </div>
+                }
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cast Oyuncu Ekleme</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/oyuncu.css">
+    <link rel="stylesheet" href="css/photos.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="js/nouislider.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="svg/logo.svg"></a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="navbar-collapse collapse" id="navbarsExample07" >
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"> Anasayfa <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Oyuncu Olmak İstiyorum</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Oyuncu Adayları</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown07">
+                    <a class="dropdown-item" href="#">Kadın oyuncular</a>
+                    <a class="dropdown-item" href="#">Erkek oyuncular</a>
+                    <a class="dropdown-item" href="#">Kız çocuk oyuncular</a>
+                    <a class="dropdown-item" href="#">Erkek çocuk oyuncular</a>
+                  </div>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">İletişim</a>
+              </li>
+              
+            </ul>
+            <div class="giris-uye">
+              <button type="submit" class="buttons">Giris Yap</button>
+              <button type="submit" class="buttons" id="buttonsUye">Üye Ol</button>
+          </div>
+          </div>
+        </div>
+  </nav>
+  <div class="giris form-f">
+      <h4>498 Cast Ajansı ve 784 Cast Direktörü ile buluşuyor.</h4>
+    </div>
+  <div class="aside-page">
+  <aside class="filtre">
+    <form class="giris-form form-i">     
+            <div class="Cerceve">
+                    <div class="form-group">
+                        <label for="">Cast Seçiniz</label>
+                        <select name="" id="" class="custom-select form-a form-j">
+                          <option value="1">Cast 1</option>
+                          <option value="2">Cast 2</option>
+                          <option value="3">Cast 3</option>              
+                        </select>
+                    </div>  
+                </div>       
+      <div class="Cerceve">
+          <div class="form-group">
+              <label for="">Oyuncu Ad/Soyad</label>
+              <input type="search" class="form-control form-a" id="" aria-describedby="" placeholder="Ad Soyad">
+            </div>
+            <div class="form-group"><button type="submit" class="form-b">Ara</button></div>
+      </div>        
+      
+     <div class="Cerceve">
+      <!-- Oyunculuk Eğitimi -->
+
+      <label for="" class="Oyunculuk">Oyunculuk eğitimi</label>
+      <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="egitimli" name="egitim" class="custom-control-input">
+        <label class="custom-control-label" for="egitimli">Eğitimli</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="egitimsiz" name="egitim" class="custom-control-input">
+        <label class="custom-control-label" for="egitimsiz">Eğitimsiz</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="eg-farketmez" name="egitim" class="custom-control-input" checked>
+        <label class="custom-control-label" for="eg-farketmez">Farketmez</label>
+      </div>
+      </div>
+      <!-- Oyunculuk Türü -->
+      <label for="" class="Oyunculuk">Oyuncu türü</label>
+      <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="yetiskin" name="oyuncu-tur" class="custom-control-input">
+        <label class="custom-control-label" for="yetiskin">Yetişkin</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="cocuk" name="oyuncu-tur" class="custom-control-input">
+        <label class="custom-control-label" for="cocuk">Çocuk</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="tur-farketmez" name="oyuncu-tur" class="custom-control-input" checked>
+        <label class="custom-control-label" for="tur-farketmez">Farketmez</label>
+      </div>
+    </div>
+              <!-- Oyuncu türü -->
+      <label for="" class="Oyunculuk">Cinsiyet</label>
+      <div class="form-group">
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="kadin" name="cinsiyet" class="custom-control-input">
+        <label class="custom-control-label" for="kadin">Kadın</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="erkek" name="cinsiyet" class="custom-control-input">
+        <label class="custom-control-label" for="erkek">Erkek</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="cins-farketmez" name="cinsiyet" class="custom-control-input" checked>
+        <label class="custom-control-label" for="cins-farketmez">Farketmez</label>
+      </div>
+    </div>
+    </div>
+    <div class="Cerceve">
+      <!-- Yaşadığı Şehir -->
+      <div class="form-group">
+          <label for="">Yaşadığı şehir</label>
+          <select name="" id="" class="custom-select form-a form-j">
+            <option value="1">Farketmez</option>
+            <option value="2">Adana</option>
+            <option value="3">Adıyaman</option>
+            <option value="4">Afyon</option>
+            <option value="5">Ağrı</option>
+            <option value="6">Aksaray</option>
+            <option value="7">Amasya</option>
+            <option value="8">Ankara</option>
+            <option value="9">Antalya</option>
+            <option value="10">Ardahan</option>
+            <option value="11">Artvin</option>
+            <option value="12">Aydın</option>
+            <option value="13">Balıkesir</option>
+            <option value="14">Bartın</option>
+            <option value="15">Batman</option>
+            <option value="16">Bayburt</option>
+            <option value="17">Bilecik</option>
+            <option value="18">Bingöl</option>
+            <option value="19">Bitlis</option>
+            <option value="20">Bolu</option>
+            <option value="21">Burdur</option>
+            <option value="22">Bursa</option>
+            <option value="23">Çanakkale</option>
+            <option value="24">Çankırı</option>
+            <option value="25">Çorum</option>
+            <option value="26">Denizli</option>
+            <option value="27">Diyarbakır</option>
+            <option value="28">Düzce</option>
+            <option value="29">Edirne</option>
+            <option value="30">Elazığ</option>
+            <option value="31">Erzincan</option>
+            <option value="32">Erzurum</option>
+            <option value="33">Eskişehir</option>
+            <option value="34">Gaziantep</option>
+            <option value="35">Giresun</option>
+            <option value="36">Gümüşhane</option>
+            <option value="37">Hakkari</option>
+            <option value="38">Hatay</option>
+            <option value="39">Iğdır</option>
+            <option value="40">Isparta</option>
+            <option value="41">İçel</option>
+            <option value="42">İstanbul</option>
+            <option value="43">İzmir</option>
+            <option value="44">KahramanMaraş</option>
+            <option value="45">Karabük</option>
+            <option value="46">Karaman</option>
+            <option value="47">Kars</option>
+            <option value="48">Kastamonu</option>
+            <option value="49">Kayseri</option>
+            <option value="50">Kırıkkale</option>
+            <option value="51">Kırklareli</option>
+            <option value="52">Kırşehir</option>
+            <option value="53">Kilis</option>
+            <option value="54">Kocaeli</option>
+            <option value="55">Konya</option>
+            <option value="56">Kütahya</option>
+            <option value="57">Magosa</option>
+            <option value="58">Malatya</option>
+            <option value="59">Manisa</option>
+            <option value="60">Mardin</option>
+            <option value="61">Muğla</option>
+            <option value="62">Muş</option>
+            <option value="63">Nevşehir</option>
+            <option value="64">Niğde</option>
+            <option value="65">Ordu</option>
+            <option value="66">Osmaniye</option>
+            <option value="67">Rize</option>
+            <option value="68">Sakarya</option>
+            <option value="69">Samsun</option>
+            <option value="70">Siirt</option>
+            <option value="71">Sinop</option>
+            <option value="72">Sivas</option>
+            <option value="73">Şanlıurfa</option>
+            <option value="74">Şırnak</option>
+            <option value="75">Tekirdağ</option>
+            <option value="76">Tokat</option>
+            <option value="77">Trabzon</option>
+            <option value="78">Tunceli</option>
+            <option value="79">Uşak</option>
+            <option value="80">Van</option>
+            <option value="81">Yalova</option>
+            <option value="82">Yozgat</option>
+            <option value="83">Zonguldak</option>
+          </select></div>
+    </div>
+      <div class="Cerceve"> 
+        <!-- Yabancı Dil -->
+      <div class="form-group">
+          <label for="">Yabancı Dil</label>
+          <select class="custom-select form-a form-h" multiple>
+            <option value="0">Farketmez</option>
+            <option value="1">Almanca</option>
+            <option value="2">Arapça</option>
+            <option value="3">Arnavutça</option>
+            <option value="4">Azerice</option>
+            <option value="5">Boşnakça</option>
+            <option value="6">Bulgarca</option>
+            <option value="7">Çince</option>
+            <option value="8">Ermenice</option>
+            <option value="9">Farça</option>
+            <option value="10">Flemenkçe</option>
+            <option value="11">Fransızca</option>
+            <option value="12">İngilizce</option>
+            <option value="13">İspanyolca</option>
+            <option value="14">İtalyanca</option>
+            <option value="15">Japonca</option>
+            <option value="16">Kürtçe</option>
+            <option value="17">Latince</option>
+            <option value="18">Makedonca</option>
+            <option value="19">Portekizce</option>
+            <option value="20">Rumca</option>
+            <option value="21">Rusça</option>
+            <option value="22">Tatarca</option>
+            <option value="23">Yunanca</option>
+            <option value="24">Zazaca</option>
+            <option value="25">Diğer</option>
+          
+          </select>
+          <label>Birden faza dil seçebilirsiniz</label>
+          </div>
+      </div>
+      <div class="Cerceve"> 
+        <!-- Yaş -->
+      <div class="form-group">
+          <label for="">YAŞ ARALIĞI</label>
+          <div id="yasC"></div>
+          <label id="yasB"></label>
+          <script>
+            var nonLinearStepSlider = document.getElementById('yasC');
+    
+            noUiSlider.create(nonLinearStepSlider, {
+                start: [18, 80],
+                connect: [false, true, false],
+                step: 1,
+                range: {
+                    'min': [0],
+                    'max': [100]
+                }
+            });
+    
+            var yasA = document.getElementById('yasB');
+            nonLinearStepSlider.noUiSlider.on('update', function (values) {
+                yasA.innerHTML = values.join(' - ');
+            });
+          </script>
+    </div>
+          <!-- Boy -->
+          <div class="form-group">
+          <label for="">BOY ARALIĞI</label>
+          <div id="boy"></div>
+          <label id="boyB"></label>
+          <script>
+            var nonLinearStepSlider = document.getElementById('boy');
+    
+            noUiSlider.create(nonLinearStepSlider, {
+                start: [100, 190],
+                connect: [false, true, false],
+                step: 1,
+                range: {
+                    'min': [50],
+                    'max': [210]
+                }
+            });
+    
+            var boyA = document.getElementById('boyB');
+            nonLinearStepSlider.noUiSlider.on('update', function (values) {
+                boyA.innerHTML = values.join(' - ');
+            });
+          </script>
+          </div>
+          <!-- Kilo -->
+          <div class="form-group">
+          <label for="">KİLO ARALIĞI</label>
+          <div id="kilo"></div>
+          <label id="kiloB"></label>
+          <script>
+            var nonLinearStepSlider = document.getElementById('kilo');
+    
+            noUiSlider.create(nonLinearStepSlider, {
+                start: [40, 120],
+                connect: [false, true, false],
+                step: 1,
+                range: {
+                    'min': [5],
+                    'max': [300]
+                }
+            });
+    
+            var kiloA = document.getElementById('kiloB');
+            nonLinearStepSlider.noUiSlider.on('update', function (values) {
+                kiloA.innerHTML = values.join(' - ');
+            });
+          </script>
+          </div>
+      </div>
+      
+      
+      <!-- detaylı ara -->
+      <button type="submit" class="form-b">Detaylı ara</button>
+    </form>
+  </aside>
+  <section class="adaylar filtre-a">
+  
+  <div class="ImageContainer">
+        <div class="Castaday">
+                <div class="aday-d foto-14" href="#">
+                <div class="aday-isim">
+                  <h4>Doğa Yaşar</h4>
+                  <h5>İzmir</h5>
+                  <span>26</span>
+                </div>
+                <div class="aday-bag">
+                  <a class="video" href="#"></a>
+                  <a href="#" class="link"></a>
+                </div>
+              </div>
+              </div>
+        <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-13" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+      <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-12" href="#">
+                    <div class="aday-isim">
+                        <h4>Doğa Yaşar</h4>
+                        <h5>İzmir</h5>
+                        <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-11" href="#">
+                    <div class="aday-isim"> 
+                     <h4>Doğa Yaşar</h4>
+                     <h5>İzmir</h5>
+                     <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-10" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                      <a href="#" class="video"></a>
+                      <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-9" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-8" href="#">
+                    <div class="aday-isim">
+                        <h4>Doğa Yaşar</h4>
+                        <h5>İzmir</h5>
+                        <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-7" href="#">
+                    <div class="aday-isim"> 
+                     <h4>Doğa Yaşar</h4>
+                     <h5>İzmir</h5>
+                     <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-6" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                      <a href="#" class="video"></a>
+                      <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-6" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                      <a href="#" class="video"></a>
+                      <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-6" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                      <a href="#" class="video"></a>
+                      <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-5" href="#">
+                    <div class="aday-isim">
+                      <h4>Doğa Yaşar</h4>
+                      <h5>İzmir</h5>
+                      <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-4" href="#">
+                    <div class="aday-isim">
+                        <h4>Doğa Yaşar</h4>
+                        <h5>İzmir</h5>
+                        <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>   
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-2" href="#">
+                    <div class="aday-isim"> 
+                     <h4>Doğa Yaşar</h4>
+                     <h5>İzmir</h5>
+                     <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+    <div class="ImageContainer">
+            <div class="Castaday">
+                    <div class="aday-d foto-3" href="#">
+                    <div class="aday-isim"> 
+                     <h4>Doğa Yaşar</h4>
+                     <h5>İzmir</h5>
+                     <span>26</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="#" class="video"></a>
+                        <a href="#" class="link"></a>
+                    </div>
+                  </div>
+                  </div>
+            <button type="submit" class="ImageButton">EKLE</button>
+    </div>
+  </section>
+</div>
+<footer class="s-gri">
+    <div class="flex-3 footerflex">
+      <div class="tag">
+        <h4>Etiketler</h4>
+        <p>Dizi Oyuncusu, Film Oyuncusu, Tiyatro Oyuncusu, Manken, Reklam yüzü olmak istiyorsanız, 
+          doğru yerdesiniz. Survivor, Yetenek Sizsiniz, Yarışmacı olmak istiyorum, İzdivaç Programları, 
+          Seyirci olmak istiyorum, Poyraz Karayel - Kiralık Aşk - Kara Sevda - Kurtlar Vadisi - Filinta - Karagül - Yeter - Acı Aşk</p>
+      </div>
+      <div class="member"><h4>Ne dediler</h4>
+      <!-- carousel -->
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="member-foto foto-8"></div>
+              <h6>Kemal Özgür Şahin</h6>   
+              <p><img src="svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="svg/tirnak-alt.svg" width="15px"></p>
+            </div>
+            <div class="carousel-item">
+              <div class="member-foto foto-7"></div>
+              <h6>Kemal Özgür Şahin</h6>  
+              <p><img src="svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="svg/tirnak-alt.svg" width="15px"></p>
+            </div>
+            <div class="carousel-item">
+              <div class="member-foto foto-6"></div>
+              <h6>Kemal Özgür Şahin</h6>  
+              <p><img src="svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="svg/tirnak-alt.svg" width="15px"></p>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      <!-- carousel end -->
+      </div>
+      <div class="footer-contact"><h4>İletişim</h4><a href="#">info@oyuncuoluyorum.com</a><div class="sosyal-a"><a href="#" class="face"></a><a href="#" class="youtube"></a><a href="#" class="ins"></a><a href="#" class="twit"></a><a href="#" class="googleplus"></a></div></div>
+    </div>
+  </footer>
+  <div class="copyr"><p>© Copyright 2019 Tüm Hakları Saklıdır.</p><a href="#">Site kullanım koşulları</a><a href="#">İletişim</a> </div>
+</body>
+</html>

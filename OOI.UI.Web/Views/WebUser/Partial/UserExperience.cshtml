@@ -1,0 +1,87 @@
+﻿
+@model OOI.UI.Web.Models.VM.WebUserGetVM
+    <div class="formkisiselbilgiler">
+        <div class="baslik-b">
+            <a href="" class="numCircle" aria-expanded=true>4</a>
+            <div class="personeltitle">
+                <span>Kişi Tecrübeleri</span>
+            </div>
+        </div>
+        <form action="/WebUser/AddUserExperience" method="post">
+            @Html.Hidden("ID")
+        <div class="col-12 d-lg-flex d-md-flex justify-content-between formExperience d-sm-block" style="padding:0;">
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <div>
+                    <label>Proje Adı</label>
+                    <input type="text" name="name" value="" class="form-control" />
+                </div>
+                @*<div>
+                    <label>Başlangıç Tarihi</label>
+                    <input type="date" name="createddate"  class="form-control" value=@DateTime.Now.ToString("yyyy-MM-dd") />
+                </div>*@
+                @*<div>
+                    <label>Bitiş Tarihi</label>
+                    <input type="date" name="finisheddate" value="" class="form-control" />
+                </div>*@
+
+                <div>
+                    <label>Proje Yılı</label>
+                    <input type="text" placeholder="örn : 2019" name="ProjectDate" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12" style="padding:0;">
+                <div>
+
+                    <label>Açıklama</label>
+                    <textarea cols="30" rows="7" class="form-control" name="description">  </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="butonGüncelle" style="display:flow-root;">
+            <button class="btn " id="btnTecrube" type="submit" style="color:#fff">Ekle</button>
+        </div>
+        </form>
+        <div class="col-12 purchases purchases-margins">
+            <div class="">
+                <div class="table-responsive-lg">
+                    <table class="table table-striped text-center">
+                        <thead class="thead" id="no-hover">
+                            <tr>
+                                <th scope="col" class="purchases-id">Proje Adı</th>
+                                <th scope="col">Başlangıç Tarihi</th>
+                                <th scope="col">Bitiş Tarihi</th>
+                                <th scope="col">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.UserExperiences)
+                            {
+                                <tr id="p_@item.ID">
+                                    <td class="purchases-id">@item.Name</td>
+                                    @*<td>@item.CreatedDateString</td>
+                                    <td>@item.FinishedDateString</td>*@
+                                    <td><a style="cursor:pointer" class="fas fa-trash-alt deleteexperience" id="@item.ID" ></a></td>
+                                </tr>
+                            }
+
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        $(".deleteexperience").click(function () {
+            var id = $(this).attr("id");
+            
+        $.ajax({
+            url: "/WebUser/DeleteUserExperience/" + id,
+            success: function () {
+                $("#p_" + id).fadeOut();
+            }
+        })
+    })
+    </script>

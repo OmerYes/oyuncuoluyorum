@@ -1,0 +1,96 @@
+﻿@model OOI.UI.Web.Models.VM.WebUserGetVM
+    <div class="formkisiselbilgiler">
+        <div class="baslik-b">
+            <a href="" class="numCircle" aria-expanded=true>3</a>
+            <div class="personeltitle">
+                <span>Kişi Özellikleri</span>
+            </div>
+        </div>
+
+        @using (Html.BeginForm("FeaturesUpdate", "WebUser", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(x => x.ID)
+            <div class="OlculerBlock">
+
+                <div>
+                    <label for="" id="">Vücut Ölçüleri</label>
+                    @Html.TextBoxFor(x => x.BodySize, new { @type = "text", @class = "form-control", @id = "validationCustom01", @placeholder = "90-60-90", @value = "" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Agırlık">Boy</label>
+                    @Html.TextBoxFor(x => x.Height, new { @type = "text", @class = "form-control", @id = "validationCustom01", @placeholder = "178", @value = "" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Hip">Kilo</label>
+                    @Html.TextBoxFor(x => x.Weight, new { @type = "text", @class = "form-control", @id = "validationCustom01", @placeholder = "80", @value = "" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Height">Beden</label>
+                    @Html.DropDownList("DressSize", new List<SelectListItem>
+                           {
+                           new SelectListItem{Text = "S", Value="S"},
+                           new SelectListItem{Text = "M", Value="M"},
+                           new SelectListItem{Text = "L", Value="L"}
+                           }, new { @id = "id_GiysiOlculer", @class = "form-control" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Height">Ten Rengi</label>
+                    @Html.DropDownList("SkinColor", new List<SelectListItem>
+                           {
+                           new SelectListItem{Text = "Esmer", Value="Esmer"},
+                           new SelectListItem{Text = "Beyaz", Value="Beyaz"},
+                           new SelectListItem{Text = "Kumral", Value="Kumral"}
+                           }, new { @id = "", @class = "form-control" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Height">Saç Tipi</label>
+                    @Html.DropDownList("HairStyle", new List<SelectListItem>
+                          {
+                          new SelectListItem{Text = "Kıvırcık", Value="Kıvırcık"},
+                          new SelectListItem{Text = "Düz", Value="Düz"},
+                          new SelectListItem{Text = "Dalgalı", Value="Dalgalı"}
+                          }, new { @id = "id_GiysiOlculer", @class = "form-control" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Hair">Saç Rengi</label>
+                    @Html.DropDownList("HairColor", new List<SelectListItem>
+                          {
+                          new SelectListItem{Text = "Sarışın", Value="Sarışın"},
+                          new SelectListItem{Text = "Kızıl", Value="Kızıl"},
+                          new SelectListItem{Text = "Siyah", Value="Siyah"}
+                          }, new { @id = "id_BustOlculer", @class = "form-control" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Eye">Göz Rengi</label>
+                    @Html.DropDownList("EyeColor", new List<SelectListItem>
+                          {
+                          new SelectListItem{Text = "Ela", Value="Ela"},
+                          new SelectListItem{Text = "Mavi", Value="Mavi"},
+                          new SelectListItem{Text = "Yeşil", Value="Yeşil"}
+                          }, new { @id = "id_EyeColor", @class = "form-control" })
+                </div>
+
+                <div>
+                    <label for="" id="id_Shoe">Ayakkabı Numarası</label>
+                    @Html.DropDownList("ShoeSize", new List<SelectListItem>
+                         {
+                         new SelectListItem{Text = "38", Value="38"},
+                         new SelectListItem{Text = "40", Value="40"},
+                         new SelectListItem{Text = "42", Value="42"}
+                         }, new { @id = "id_ShoeOlculer", @class = "form-control" })
+                </div>
+
+            </div>
+            <div class="butonGüncelle" style="display:flow-root;">
+                <button class="btn btnGonder" id="btnDevam" type="submit">Güncelle</button>
+            </div>
+        }
+
+    </div>

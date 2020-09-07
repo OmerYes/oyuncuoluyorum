@@ -1,0 +1,201 @@
+﻿
+@{
+    ViewBag.Title = "Proje Detay";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model ProjectDetailVM
+@{
+    int sayac = 2;
+}
+<div class="giris form-f">
+    <h4>498 Cast Ajansı ve 784 Cast Direktörü ile buluşun.</h4>
+</div>
+<div class="aside-blog">
+    <section class="yazi-detay">
+
+        <div class="d-lg-flex d-sm-block flex-row justify-content-between">
+            <div class="Slidescontainer d-md-block d-sm-block">
+
+                <div class="ProjectSlides">
+                    <img src="~/Content/Projects/MainPhotos/@Model.MainPhoto" alt="">
+                </div>
+
+                @foreach (var item in Model.ProjectPhotos)
+                {
+                    <div class="ProjectSlides">
+                        <img src="~/Content/Projects/MainPhotos/@item.Path" alt="">
+                    </div>
+                }
+
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <div class="row" style="margin-top:10px">
+                    <div class="column">
+                        <img class="demo cursor" src="~/Content/Projects/MainPhotos/@Model.MainPhoto" onclick="currentSlide(1)" alt="Bazzer">
+                    </div>
+                    @foreach (var item in Model.ProjectPhotos)
+                    {
+                        <div class="column">
+                            <img class="demo cursor" src="~/Content/Projects/MainPhotos/@item.Path" onclick="currentSlide(@sayac)" alt="Altered carbon">
+                        </div>
+                        {
+                            sayac++;
+
+                        }
+                    }
+                </div>
+            </div>
+            <div class="pd-title">
+                <h2>@Model.Title</h2>
+                <div class="">
+                    <label for="" class="d-block">Firma Adı</label>
+                    <span>@Model.CompanyName</span>
+                </div>
+                <div>
+                    <label for="" class="d-block">Kategori</label>
+                    <span>@Model.CategoryName</span>
+                </div>
+                @*<div>
+                    <label for="" class="d-block">Başlangıç Tarihi</label>
+                    <span>@Model.StartDateString</span>
+                </div>*@
+                <div>
+                    <label for="" class="d-block">Bitiş Tarihi</label>
+                    <span>@Model.EndDateString</span>
+                </div>
+
+                <div class="d-inline-block">
+                    @if (!Model.ApplyStatus)
+                    {
+                        <button class="btnBasvur float-right btnprojectdetail" id="@Model.ID">Başvur</button>
+                    }
+                    else
+                    {
+                        <button class="btnBasvur float-right" id="@Model.ID">Başvuruldu</button>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+
+        <p>@Model.Description</p>
+
+
+    </section>
+    <aside>
+
+        <div class="SameProjects">
+            <h3>Benzer Projeler</h3>
+            <a href="#" class="yazi">
+                <div class="yazi-foto foto-1"></div>
+                <div class="yazi-a">
+                    <h5>Lorem ipsum dolor sit amet</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="yazi">
+                <div class="yazi-foto foto-2"></div>
+                <div class="yazi-a">
+                    <h5>Lorem ipsum dolor sit amet</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="yazi">
+                <div class="yazi-foto foto-3"></div>
+                <div class="yazi-a">
+                    <h5>Lorem ipsum dolor sit amet</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </a>
+            <div class="liste-b"><a href="#">Tüm Projeler <img src="/Content/svg/sari-ok-sag.svg" alt=""></a></div>
+        </div>
+
+    </aside>
+
+</div>
+
+@Html.Partial("Partial/ProjectApplyModal")
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("ProjectSlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+<script>
+    var id = 0;
+    $(".btnBasvur").click(function () {
+        $('#projectapplymodal').modal('show');
+        id = $(this).attr("id");
+
+    })
+
+    $(".projectapply").click(function () {
+
+        $.ajax({
+            url: "/ProjectApply/Apply/" + id,
+            type: "POST",
+            success: function (result) {
+                $('#projectapplymodal').modal('hide');
+
+                if (result.Status == "1") {
+                    $('#projectapplysuccessmodal').modal('show');
+                    $('#projectapplysuccessmodal .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "2") {
+                    $('#projectapplyold').modal('show');
+                    $('#projectapplyold .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "3") {
+                    $('#projectapplycreditserror').modal('show');
+                    $('#projectapplycreditserror .modal-body p').text(result.Messages);
+                }
+                if (result.Status == "4") {
+                    $('#projectapplyloginerror').modal('show');
+                    $('#projectapplyloginerror .modal-body p').text(result.Messages);
+                }
+
+            }
+        })
+    })
+</script>
+

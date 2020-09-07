@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminUserLayoutPage.cshtml";
+
+}
+
+@using GridMvc.Html
+
+@model List<OOI.UI.Web.Areas.Admin.Models.VM.ProjectCategoryVM>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <a style="float:right" href="/Admin/ProjectCategory/AddCategory/" class="btn btn-outline-success"><i class="fa fa-plus"></i> Yeni Kategori</a>
+        <h6 class="m-0 font-weight-bold text-primary">Proje Kategori Listesi</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @Html.Grid(Model).Columns(x =>
+           {
+               x.Add(model => model.ID).Titled("ID").Sortable(true).Filterable(true);
+               x.Add(model => model.Title).Titled("Başlık").Sortable(true).Filterable(true);
+               x.Add(model => model.Name).Titled("Kategori Adı").Sortable(true).Filterable(true);
+               x.Add(model => model.Description).Titled("Açıklama").Sortable(true).Filterable(true);
+               x.Add().Encoded(false).Sanitized(false).RenderValueAs(model =>
+               {
+                   string html = "<a href='/Admin/ProjectCategory/CategoryDetail/" + model.ID.ToString() + "'" + "<button class ='btn btn-outline-success'><i class='fa fa-search'></i></button>";
+                   return MvcHtmlString.Create(html);
+               }
+                ).SetWidth(10);
+               x.Add().Encoded(false).Sanitized(false).RenderValueAs(model =>
+               {
+                   string html = "<a href='/Admin/ProjectCategory/UpdateCategory/" + model.ID.ToString() + "'" + "<button class ='btn btn-outline-warning'><i class='fa fa-pencil'></i></button>";
+                   return MvcHtmlString.Create(html);
+               }
+                ).SetWidth(10);
+
+               x.Add().Encoded(false).Sanitized(false).RenderValueAs(model =>
+               {
+                   string html = "<a href='/Admin/ProjectCategory/RemoveCategory/" + model.ID.ToString() + "'" + "<button class ='btn btn-outline-danger'><i class='fa fa-trash'></i></button>";
+                   return MvcHtmlString.Create(html);
+               }
+               ).SetWidth(10);
+           }).WithPaging(5).SetLanguage("tr")
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

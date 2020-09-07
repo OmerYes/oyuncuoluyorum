@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "SiteProjectAddUsers";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model  List<WebUserListVM>
+
+<div class="giris form-f">
+    <h4>@ViewBag.Title = "SiteProjectAddUsers";</h4>
+</div>
+<div class="aside-page">
+    @Html.Partial("~/Views/WebUserList/Partial/Filter.cshtml", Model)
+    <section class="adaylar filtre-a">
+        @foreach (var item in Model)
+        {
+            <div class="ImageContainer">
+                <div class="Castaday">
+                    <div class="aday-d foto-9" href="#">
+                        <div class="aday-isim">
+                            <h4>@item.FullName</h4>
+                            <h5>@item.City</h5>
+                            <span>@item.Age</span>
+                        </div>
+                        <div class="aday-bag">
+                            <a href="#" class="link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttonImage">
+                    <button type="submit" class="ImageButton">EKLE</button>
+                </div>
+
+            </div>
+        }
+    </section>
+</div>
+@section scripts {
+    <script>
+        $(".buttonImage").click(function () {
+            $(".ImageButton").text("Çıkar");
+            $(".ImageButton").css("background-color", "red");
+
+        })
+    </script>
+}
+
+

@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "İletişim";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model ContactVM
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+
+<div class="contact_us d-flex flex-column align-items-center justify-content-center">
+    <div class="contact_top d-flex flex-column justify-content-center align-items-center">
+        <h1>Bizimle iletişime geçin</h1>
+        <p>Sorularınız mı var? Yazın, arayın; görüşelim.</p>
+    </div>
+    <div class="contact_info d-flex flex-md-row flex-column align-items-center justify-content-around">
+        <div class="contact_address mb-md-0 mb-sm-3 mb-xs-1 text-center">
+            <p>19 Mayıs Mh. Mercan Sk. No:4 </p>
+            <p>Kadıköy İstanbul, TÜRKİYE</p>
+        </div>
+        <div class="d-flex flex-column mb-md-0 mb-sm-3 mb-xs-1 align-items-center">
+            <a href="tel:902128887766" class="contact_element"><i class="fa fa-phone" aria-hidden="true"></i>+90 212 888 7766</a>
+            <a href="mailto:name@email.com"><i class="fas fa-envelope"></i>Email gönderin</a>
+        </div>
+        <div class="d-flex flex-column mb-md-0 align-items-center">
+            <a href="https://www.instagram.com/oyuncuoluyorum" class="contact_element" target="_blank"><i class="fab fa-instagram"></i>oyuncuoluyorum</a>
+            <a href="https://www.twitter.com/oyuncuoluyorum" target="_blank"><i class="fab fa-twitter"></i>oyuncuoluyorum</a>
+        </div>
+    </div>
+</div>
+
+<div class="container contact_bottom">
+    @if (ViewBag.IslemDurum == EnumIslemDurum.ValidationHata)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary()
+        </div>
+    }
+    @if (ViewBag.IslemDurum == EnumIslemDurum.IslemBasarili)
+    {
+        <div class="alert alert-success">
+            <div class="alert alert-success">
+                Mesajınız başarılı bir şekilde iletilmiştir
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="contact_left col-md-12 col-lg-6 d-flex flex-column pb-3">
+            <form action="/Contact/Index" method="post">
+                @Html.AntiForgeryToken()
+                <div class="form-group mt-4 pt-1 d-flex justify-content-lg-start justify-content-center">
+                    <h4>İletişim Formu</h4>
+                </div>
+                <div class="d-flex justify-content-start form-group">
+                    <div class="mr-3 flex-fill">
+                        <label for="">Adınız</label>
+                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-a" })
+
+                    </div>
+                    <div class="flex-md-fill">
+                        <label for="">Soyadınız</label>
+                        @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-a" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Telefon numaranız</label>
+                    @Html.TextBoxFor(q => q.Phone, new { @class = "form-control form-a" })
+                </div>
+                <div class="form-group">
+                    <label for="">E-postanız</label>
+                    @Html.TextBoxFor(q => q.Phone, new { @class = "form-control form-a" })
+                </div>
+                <div class="form-group">
+                    <label for="">Mesajınız</label>
+                    <input type="textarea" class="form-control form-a" name="Message">
+                </div>
+                <div class="form-group d-flex justify-content-lg-start justify-content-center">
+                    <button type="submit" class="d-inline contact_button mt-lg-3 mt-4" id="gonder">Gönder</button>
+                </div>
+            </form>
+        </div>
+        <div class="contact_map embed-responsive embed-responsive-4by3 col-md-12 offset-lg-1 col-lg-5 mt-lg-0 mt-5">
+            <iframe class="embed-responsive-item" id="gmap_canvas" src="https://maps.google.com/maps?q=istanbul&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </div>
+    </div>
+</div>
+

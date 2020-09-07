@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Sipariş Geçmişi";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model OrderHistoryVM
+<style>
+    body {
+        background-color: #ffffff;
+    }
+</style>
+
+
+<div class="container CompanyProjectBlock d-lg-flex d-md-flex d-sm-block flex-row justify-content-between">
+    <div class="OrderHistoryPhoto">
+        @if (!Model.IsFirm)
+        {
+            <img src="~/Content/WebUser/MainPhotos/@Model.Photo" alt="" />
+        }
+        else
+        {
+            <img src="~/Content/WebUser/MainPhotos/@Model.Photo" alt="" />
+        }
+
+    </div>
+    <div class="OrderHistoryText">
+        <div>
+            <label class="d-block">Ad Soyad</label>
+            <span>@Model.FullName</span>
+        </div>
+        <div>
+            <label class="d-block">Mevcut Kredi</label>
+            <span> @Model.Credit<i class="fas fa-coins" style="color:#E6C20E;margin-left:5px"></i></span>
+        </div>
+        <div>
+            <label class="d-block">Satın Alınan Kredi</label>
+            <span>@Model.PurchasedCredit <i class="fas fa-coins" style="color:#E6C20E;margin-left:5px"></i></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="purchase purchase-margins">
+    <div class="container purchase-title">
+        <h2>Sipariş Geçmişi</h2>
+    </div>
+    <div class="container">
+        <div class="table-responsive-lg">
+            <table class="table table-striped text-center">
+                <thead class="thead-dark" id="no-hover">
+                    <tr>
+                        <th scope="col" class="purchase-id">Sipariş No</th>
+                        <th scope="col">Satın Alınan Kredi</th>
+                        <th scope="col">İşlem Tarihi</th>
+                        <th scope="col">Kredi Kartı No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="purchase-id"># 708112</th>
+                        <td>500</td>
+                        <td>12 Nisan, 2020</td>
+                        <td>5334 **** **** 2322</td>
+                    </tr>
+                    <tr>
+                        <td class="purchase-id"># 708113</th>
+                        <td>1200</td>
+                        <td>7 Haziran, 2020</td>
+                        <td>4563 **** **** 9856</td>
+                    </tr>
+                    <tr>
+                        <td class="purchase-id"># 708114</th>
+                        <td>200</td>
+                        <td>17 Ekim, 2020</td>
+                        <td>2674 **** **** 5382</td>
+                    </tr>
+                    <tr>
+                        <td class="purchase-id"># 708115</th>
+                        <td>700</td>
+                        <td>3 Ocak, 2020</td>
+                        <td>4523 **** **** 7851</td>
+                    </tr>
+                    <tr>
+                        <td class="purchase-id"># 708116</th>
+                        <td>2300</td>
+                        <td>14 Şubat, 2020</td>
+                        <td>4223 **** **** 4323</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

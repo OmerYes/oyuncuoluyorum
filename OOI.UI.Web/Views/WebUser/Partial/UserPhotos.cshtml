@@ -1,0 +1,72 @@
+﻿@model OOI.UI.Web.Models.VM.WebUserGetVM
+<style>
+    .PhotoBlock img {
+        height: inherit;
+        width: inherit;
+    }
+</style>
+@{
+    int sayac = 0;
+}
+<div class="formkisiselbilgiler">
+    <div class="baslik-b">
+        <a href="" class="numCircle" aria-expanded=true>2</a>
+        <div class="personeltitle">
+            <span>Resimler</span>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("PhotoUpdate", "WebUser", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(x => x.ID)
+
+        <div class="PhotoBlock">
+
+            @foreach (var item in Model.UserPhotos)
+            {
+                <div class="PhotoList-Kisi">
+                    <div class="Photo_genID"><img src="/Content/WebUser/Photos/@item.Path" id="@sayac"></div>
+                    <div class="fileUpload">
+                        <div class="clear"></div>
+                        <input accept="image/jpeg,image/jpg,image/png,image/JPEG,image/JPG" id="@sayac" name="file" type="file" class="profilephoto" aria-invalid="true">
+                    </div>
+                </div>
+                <input type="hidden" name="photoid" value="@item.ID" />
+                sayac++;
+            }
+        </div>
+        <div class="PhotosLabel">
+            <div><label>Ek Fotoğraf</label></div>
+            <div><label>Ek Fotoğraf</label></div>
+            <div><label>Ek Fotoğraf</label></div>
+            <div><label>Ek Fotoğraf</label></div>
+            <div><label>Ek Fotoğraf</label></div>
+        </div>
+        <div class="butonGüncelle" style="display:flow-root;">
+
+            <button class="btn" id="btnDevam" type="submit">Güncelle</button>
+            <button class="btn" id="btnDevam" type="submit">Fotograf Ekle</button>
+        </div>        
+    }
+
+</div>
+
+    <script>
+        function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#' + id).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(".profilephoto").change(function () {
+            var id = $(this).attr("id");
+            readURL(this, id);
+        });
+    </script>
+

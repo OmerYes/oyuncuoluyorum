@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Dizi-Film-Reklam-Kirala-Sat";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model List<AdvertVM>
+
+<div class="giris form-f">
+    <h4>498 Cast Ajansı ve 784 Cast Direktörü ile buluşun.</h4>
+</div>
+<div>
+    <div class="baslıkcontainer">
+        <div class="baslık star foto-16"></div>
+        <div class="baslık"><span id="ww">İlanlar</span></div>
+        <div class="baslık star foto-16"></div>
+    </div>
+</div>
+<section class="CastListesi-container justify-content-start">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="CastListesi ">
+                <div class="fotograf"><img src="~/Content/Advert/MainPhotos/@item.MainPhoto" alt="Alternate Text" /></div>
+
+                <div class="CastCommon CastFdate">
+                    <span>Kategori:</span>
+                    <span>@item.CategoryName</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastCommon CastDescription">
+                    <span>@item.Description</span>
+                </div>
+                <hr>
+                <div class="CastCommon CastFdate">
+                    <span>İlan:</span>
+                    <span>@item.Name</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastCommon CastSdate">
+                    <span>Oluşturulma Tarihi:</span>
+                    <span>@item.CreatedDate</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastCommon CastSdate">
+                    <span>Telefon Numarası:</span>
+                    <span>@item.AdvertPhone</span>
+                </div>
+                <div class="CastListesi-hr"><hr></div>
+                <div class="CastButondiv">
+                    
+                        <button class="ButtonDetay" id="@item.ID"><a href="/dizi-film-reklam-kirala-sat/ilandetay/@item.ID">Detay</a></button>
+                    
+
+                </div>
+            </div>
+        </div>
+    }
+</section>

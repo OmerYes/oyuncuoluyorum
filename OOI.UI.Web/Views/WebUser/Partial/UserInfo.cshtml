@@ -1,0 +1,272 @@
+﻿@model OOI.UI.Web.Models.VM.WebUserGetVM
+
+
+<div class="formkisiselbilgiler">
+    <div class="baslik-b">
+        <a href="" class="numCircle" aria-expanded=true>1</a>
+        <div class="personeltitle">
+            <span>Kişisel Bilgiler</span>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("InfoUpdate", "WebUser", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "personel1" }))
+    {
+        @Html.HiddenFor(x => x.ID)
+        <div class="form-row">
+        
+            <div>
+                <div class="FotoBlock" id="kisiselTopResim">
+                    <div class="FotoList" id="kisiselTopResim">
+                        <div class="foto-17 Photo_genIDResim"><img id="onizleme" width="100%" height="100%" src="/Content/WebUser/MainPhotos/@Model.ProfilePhoto"></div>
+
+                        <div class="fileUpload">
+                            <div class="clear"></div>
+                            <input accept="image/jpeg,image/jpg,image/png,image/JPEG,image/JPG" id="mainfile" name="mainfile" type="file" aria-invalid="true">
+                            <div class="clear"></div>
+                        </div>
+
+                        <img id="test1" src="">
+                        <canvas id="canvas" height="5" width="5" style="background-color:tomato"></canvas>
+
+                    </div>
+                    <div id="FotoBlock-span">
+                        <div id="common-span"><span>Orjinal Resim</span></div>
+                        <div id="common-span"><span>Yayınlanacak Resim</span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="stage2">
+                <div id="kisiselTop">
+                    <label for="validationCustom01">Ad</label>
+                    @Html.TextBoxFor(x => x.Name, new { @type = "text", @class = "form-control", @id = "validationCustom01", @placeholder = "Adınız", @value = "" })
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    <div class="valid-feedback">
+                    </div>
+                </div>
+
+                <div id="kisiselTop">
+                    <label for="validationCustom02">Soyad</label>
+                    @Html.TextBoxFor(x => x.LastName, new { @type = "text", @class = "form-control", @id = "validationCustom02", @placeholder = "Soyadınız", @value = "" })
+                    @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div id="kisiselTop">
+                    <label for="validationCustom01">Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { @type = "text", @class = "form-control", @id = "validationCustom01", @placeholder = "@mail.com", @value = "" })
+                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <div class="form-row">
+                <div>
+                    <label for="validationCustom02">Cinsiyet</label>
+                    @Html.DropDownList("Gender", new List<SelectListItem>
+                        {
+                        new SelectListItem{Text = "Erkek", Value="Erkek"},
+                        new SelectListItem{Text = "Kadın", Value="Kadın"}
+                        }, new { @id = "ddlEhliyetTuru", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Gender, "", new { @class = "text-danger" })
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div>
+                    <label for="">Doğum Tarihi</label>
+
+                    @Html.TextBoxFor(model => model.BirthDate, new { @type = "date", @class = "date-picker form-control", @Value = Model.BirthDateString })
+                    @Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "text-danger" })
+
+                </div>
+                <div>
+                    <label for="">Doğum yeriniz</label>
+                    <select name="" id="" class="form-control">
+                        <option value="1">Diğer</option>
+                        <option value="2">Adana</option>
+
+                    </select>
+                </div>
+                <div id="row-cep">
+                    <label for="validationCustom01">Cep Telefonu</label>
+                    @Html.TextBoxFor(x => x.Phone, new { @type = "text", @class = "form-control", @id = "phone", @placeholder = "(---) --- -- --", @value = "" })
+
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <div>
+                    <label for="">Ehliyet</label>
+                    @Html.DropDownList("DriverLicense", new List<SelectListItem>
+                       {
+                       new SelectListItem{Text = "A2", Value="A2"},
+                       new SelectListItem{Text = "B", Value="B"},
+                       new SelectListItem{Text = "D", Value="D"},
+                       new SelectListItem{Text = "E", Value="E"}
+                       }, new { @id = "ddlEhliyetTuru", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.DriverLicense, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="">Şehir</label>
+                    @Html.DropDownList("CityID", Model.drpCities, "Şehir Seçiniz", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CityID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div>
+                    <label for="">Üniversite</label>
+                    @Html.DropDownList("University", new List<SelectListItem>
+                       {
+                       new SelectListItem{Text = "Abant İzzet Baysal Üniversitesi", Value="Abant İzzet Baysal Üniversitesi"},
+                       new SelectListItem{Text = "Selçuk Üniversitesi", Value="Selçuk Üniversitesi"},
+                       new SelectListItem{Text = "İstanbul Teknik Üniversitesi", Value="İstanbul Teknik Üniversitesi"},
+                       new SelectListItem{Text = "Yıldız Teknik Üniversitesi", Value="Yıldız Teknik Üniversitesi"}
+                       }, new { @id = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.University, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <label for="">Bölüm</label>
+                    @Html.DropDownList("Branch", new List<SelectListItem>
+                       {
+                       new SelectListItem{Text = "Bilgisayar Mühendisliği", Value="Bilgisayar Mühendisliği"},
+                       new SelectListItem{Text = "Fotoğrafçılık", Value="Fotoğrafçılık"},
+                       new SelectListItem{Text = "Heykelcilik", Value="Heykelcilik"}
+                       }, new { @id = "", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Branch, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-row" id="row_bottom">
+
+                <div>
+                    <label for="validationCustom01">Adres</label>
+                    @Html.TextAreaFor(x => x.Address, new { @name = "", @id = "", @cols = "30", @rows = "3", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                </div>
+
+                <div id="row-cep">
+                    <button class="btn " id="btnDevam1" type="submit">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    @*Modal view*@
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="">Resim Kırpma ekranı</h4>
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                </div>
+
+               
+
+                <img id="test" src="">
+                <div class="modal-body">
+                    <form id="form">
+                        <div class="form-group">
+                            <div id="views"></div>
+
+                        </div>
+
+                        <input type="button" id="btnCrop" value="Crop" />
+                        <input type="submit" id="btnUpload" value="Upload" style="display: none" />
+                        <input type="hidden" name="imgX1" id="imgX1" />
+                        <input type="hidden" name="imgY1" id="imgY1" />
+                        <input type="hidden" name="imgWidth" id="imgWidth" />
+                        <input type="hidden" name="imgHeight" id="imgHeight" />
+                        <input type="hidden" name="imgCropped" id="imgCropped" style="background-color:tomato" />
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.js"></script>
+<script src="~/Scripts/mask/jquery.inputmask.bundle.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#phone").inputmask({ "mask": "(999) 999-9999" });
+
+
+        function readMainURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                      $('#test').show();
+                    $("#MyModal").modal("show"); //bunu ben ekledim resmi modal da göstermek için
+                    $('#onizleme').attr('src', e.target.result);
+                    $('#test').attr('src', e.target.result);//bunu da ben ekledim remi modal ın img taginde göstermek için
+
+                    $('#test').Jcrop({
+                        onChange: SetCoordinates,
+                        onSelect: SetCoordinates
+                    });
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        }
+
+        $('#btnCrop').click(function () {
+                var x1 = $('#imgX1').val();
+                var y1 = $('#imgY1').val();
+                var width = $('#imgWidth').val();
+                var height = $('#imgHeight').val();
+                var canvas = $("#canvas")[0];
+                var context = canvas.getContext('2d');
+                var img = new Image();
+                img.onload = function () {
+                    canvas.height = height;
+                    canvas.width = width;
+                    alert("x1"+x1);
+                    alert("y1"+y1);
+                    alert("width"+width);
+                    alert("height"+height);
+                    context.drawImage(img, x1, y1, width, height, 0, 0, width, height);
+                    $('#imgCropped').val(canvas.toDataURL());
+                };
+
+            img.src = $('#test').attr("src");
+            $("#MyModal").modal("hide"); //bunu ben ekledim  modal kapatmak için
+            });
+   
+
+        function SetCoordinates(c) {
+            $('#imgX1').val(c.x);
+            $('#imgY1').val(c.y);
+            $('#imgWidth').val(c.w);
+            $('#imgHeight').val(c.h);
+        };
+   
+        $("#mainfile").change(function () {
+            $('#test').hide();
+            readMainURL(this);
+
+        });
+
+
+    });
+
+
+
+</script>
+

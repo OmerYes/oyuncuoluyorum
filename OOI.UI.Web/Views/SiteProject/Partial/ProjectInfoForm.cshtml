@@ -1,0 +1,42 @@
+﻿@model ProjectVM
+<div class="CastPhotoBlock container">
+
+    <div class="CastPhotoList">
+        <div class="foto-15 Photo_genID ProjeAdd">
+            <img id="projectmainimg" width="100%" height=auto>
+            <div class="fileUpload">
+                <div class="clear"></div>
+                <input accept="image/jpeg,image/jpg,image/png,image/JPEG,image/JPG" id="projectmainfile" name="mainphoto" type="file" aria-invalid="true">
+
+                <div class="clear"></div>
+                <span class="PhotoText"></span>
+            </div>
+        </div>
+    </div>
+    <div class="CastDetay">
+        <div class="CastDetay-Stage1">
+            <div class="CastKategori">
+                <label for="" style="font-weight: bold">Kategori</label>
+                @Html.DropDownList("ProjectCategoryID", Model.drpProjectCategories, new { @class = "form-control" })
+            </div>
+            <div class="CastAdi">
+                <label style="font-weight: bold">Adı</label>
+                @Html.TextBoxFor(q => q.Title, new { @class = "form-control" })
+            </div>
+            @*<div class="CastTarih">
+                <label for="" style="font-weight: bold">Başlangıç Tarihi</label>
+                @Html.TextBoxFor(q => q.StartDate, new { @class = "form-control", @type = "date" })
+            </div>*@
+            <div class="CastBitis">
+                <label for="" style="font-weight: bold">Bitiş Tarihi</label>
+                @Html.TextBoxFor(q => q.EndDate, new { @class = "form-control", @type = "date" })
+            </div>
+        </div>
+        <div class="CastDetay-Stage2">
+            <div class="CastAcıklama">
+                <label for="" style="font-weight: bold">Açıklama</label>
+                @Html.TextAreaFor(q => q.Description, new { @cols = "30", @rows = "12", @class = "form-control form-a" })
+            </div>
+        </div>
+    </div>
+</div>

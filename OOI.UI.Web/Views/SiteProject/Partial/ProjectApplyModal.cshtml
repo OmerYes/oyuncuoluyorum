@@ -1,0 +1,122 @@
+﻿<style>
+    .modal-header {
+        background-color: #FFC931 !important;
+    }
+
+        .modal-content i {
+            color: #FFC931 !important;
+        }
+</style>
+
+<!--Proje Onay Soru Popup-->
+
+<div class="modal fade" id="projectapplymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Proje Başvuru</p>
+            </div>
+            <div class="modal-body">
+
+                <i class="fas fa-question fa-4x animated rotateIn mb-4"></i>
+
+                <p>Projeye başvurmak istediğinize emin misiniz?</p>
+                <p>Başvuru sonrası 3 krediniz hesaptan düşülecektir</p>
+
+            </div>
+
+            <div class="modal-footer flex-center">
+                <button class="btn btn-warning projectapply">Başvur</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Proje Onay Sonrası Popup-->
+
+<div class="modal fade" id="projectapplysuccessmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Proje Başvuru</p>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                <p>Projeye başvurunuz başarıyla tamamlanmıştır</p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Proje Daha Önce Başvuru Sonrası Popup-->
+
+<div class="modal fade" id="projectapplyold" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Proje Başvuru</p>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                <p></p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Proje Kredi Uyarı-->
+
+<div class="modal fade" id="projectapplycreditserror" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Proje Başvuru</p>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-credit-card fa-4x animated rotateIn mb-4"></i>
+                <p>Projeye başvurunuz başarıyla tamamlanmıştır</p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <a href="/Order"><button type="button" class="btn btn-warning">Kredi Satın Al</button></a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Proje Login Uyarı-->
+
+<div class="modal fade" id="projectapplyloginerror" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Proje Başvuru</p>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-sign-in-alt fa-4x animated rotateIn mb-4"></i>
+                <p></p>
+            </div>
+
+            <div class="modal-footer flex-center">
+                <a href="/oyuncu-olmak-istiyorum/Kayıt"><button type="button" class="btn btn-warning">Üye Ol!</button></a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>

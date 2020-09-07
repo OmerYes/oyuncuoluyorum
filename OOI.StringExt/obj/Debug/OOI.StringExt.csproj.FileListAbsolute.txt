@@ -1,0 +1,12 @@
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\bin\Debug\OOI.StringExt.dll
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\bin\Debug\OOI.StringExt.pdb
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.csprojAssemblyReference.cache
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.csproj.CoreCompileInputs.cache
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.dll
+C:\Users\omer\Source\Repos\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.pdb
+C:\Users\omer\Desktop\OOI\OOI.StringExt\bin\Debug\OOI.StringExt.dll
+C:\Users\omer\Desktop\OOI\OOI.StringExt\bin\Debug\OOI.StringExt.pdb
+C:\Users\omer\Desktop\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.csprojAssemblyReference.cache
+C:\Users\omer\Desktop\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.csproj.CoreCompileInputs.cache
+C:\Users\omer\Desktop\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.dll
+C:\Users\omer\Desktop\OOI\OOI.StringExt\obj\Debug\OOI.StringExt.pdb

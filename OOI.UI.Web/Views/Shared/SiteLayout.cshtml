@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="~/Content/img/favicon.ico" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/css/oyuncu.css">
+    <link rel="stylesheet" href="~/Content/css/photos.css">
+    <link rel="stylesheet" href="~/Content/css/nouislider.min.css">
+    <link href="~/MDContent/css/mdb.css" rel="stylesheet" />
+
+    <script src="~/MDContent/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="~/MDContent/js/popper.min.js" type="text/javascript"></script>
+    <script src="~/MDContent/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/nouislider.js" type="text/javascript"></script>
+    <script src="~/Content/js/wNumb.js"></script>
+    <script src="~/MDContent/js/mdb.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top justify-content-lg-between">
+        <a class="navbar-brand ml-1" href="/"><img class="scrolled" src="~/Content/svg/logo.svg"></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse justify-content-md-end align-items-md-end w-100" id="navbarMenu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <span></span>
+                    <a class="nav-link" href="/">ANASAYFA<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item"><span></span><a class="nav-link" href="/oyuncu-olmak-istiyorum/Kayıt">OYUNCU OLMAK İSTİYORUM</a></li>
+                <li class="nav-item dropdown">
+                    <span></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OYUNCU ADAYLARI</a>
+                    <div class="dropdown-menu" id="dropdown-background" aria-labelledby="dropdown07">
+                        <a class="dropdown-item" href="/Oyuncu-Listesi/?gender=Kadın-Oyuncular">Kadın oyuncular</a>
+                        <a class="dropdown-item" href="/Oyuncu-Listesi/?gender=Erkek-Oyuncular">Erkek oyuncular</a>
+                        <a class="dropdown-item" href="/Oyuncu-Listesi/?gender=Cocuk_K">Kız çocuk oyuncular</a>
+                        <a class="dropdown-item" href="/Oyuncu-Listesi/?gender=Cocuk_E">Erkek çocuk oyuncular</a>
+                    </div>
+                </li>
+                <li class="nav-item"><span></span><a class="nav-link" href="/dizi-film-reklam-kirala-sat">İLANLAR</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/SiteProject">PROJELER</a>
+                </li>
+                @if (ViewBag.Loginstatus)
+                {
+                    if (ViewBag.LoginCategory == EnumLoginCategory.UserLogin)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFİL</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown07">
+                                <a class="dropdown-item" href="/WebUser/WebUserGet">Bilgilerim</a>
+                                <a class="dropdown-item" href="/Order/OrderHistory">Kredi Geçmişim</a>
+                                <a class="dropdown-item" href="/Order/">Kredi Satın Al</a>
+                                <a class="dropdown-item" href="/SiteProjectUser/ProjectApply">Başvurduğum Projeler</a>
+                                <a class="dropdown-item" href="/Password/ChangePassword">Güvenlik</a>
+                                <a class="dropdown-item" href="/Account/Logout">Çıkış</a>
+
+                            </div>
+                        </li>
+                    }
+                    if (ViewBag.LoginCategory == EnumLoginCategory.CompanyLogin)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFİL</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown07">
+                                <a class="dropdown-item" href="/SiteProject/FirmProject">Projelerim</a>
+                                <a class="dropdown-item" href="/SiteProject/Add">Proje Ekle</a>
+                                <a class="dropdown-item" href="/Oyuncu-Listesi/">Oyuncu Bul</a>
+                                <a class="dropdown-item" href="/Order/OrderHistory">Kredi Geçmişim</a>
+                                <a class="dropdown-item" href="/Order/">Kredi Satın Al</a>
+                                <a class="dropdown-item" href="/SiteCompany/Update">Firma Bilgilerim</a>
+                                <a class="dropdown-item" href="/Password/ChangePassword">Güvenlik</a>
+                                <a class="dropdown-item" href="/Account/Logout">Çıkış</a>
+                            </div>
+                        </li>
+                    }
+                }
+
+            </ul>
+            @if (!ViewBag.Loginstatus)
+            {
+                <div class="giris-uye navbar-text small">
+                    <a href="/oyuncu-olmak-istiyorum/Giris"><button type="submit" class="buttons nav-giris">GİRİŞ YAP</button></a>
+                    <a href="/oyuncu-olmak-istiyorum/Kayıt"><button type="submit" class="buttons nav-uye" id="buttonsUye">ÜYE OL</button></a>
+                </div>
+            }
+
+        </div>
+    </nav>
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    @RenderBody()
+    <footer class="s-gri">
+        <div class="flex-3 container">
+            <div class="tag">
+                <h4>Etiketler</h4>
+                <p>
+                    Dizi Oyuncusu, Film Oyuncusu, Tiyatro Oyuncusu, Manken, Reklam yüzü olmak istiyorsanız,
+                    doğru yerdesiniz. Survivor, Yetenek Sizsiniz, Yarışmacı olmak istiyorum, İzdivaç Programları,
+                    Seyirci olmak istiyorum, Poyraz Karayel - Kiralık Aşk - Kara Sevda - Kurtlar Vadisi - Filinta - Karagül - Yeter - Acı Aşk
+                </p>
+            </div>
+            <div class="member">
+                <h4>Ne dediler</h4>
+                <!-- carousel -->
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+
+                            <h6>Kemal Özgür Şahin</h6>
+                            <p><img src="~/Content/svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="~/Content/svg/tirnak-alt.svg" width="15px"></p>
+                        </div>
+                        <div class="carousel-item">
+
+                            <h6>Kemal Özgür Şahin</h6>
+                            <p><img src="~/Content/svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="~/Content/svg/tirnak-alt.svg" width="15px"></p>
+                        </div>
+                        <div class="carousel-item">
+
+                            <h6>Kemal Özgür Şahin</h6>
+                            <p><img src="~/Content/svg/tirnak-ust.svg" width="15px"> ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna <img src="~/Content/svg/tirnak-alt.svg" width="15px"></p>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <!-- carousel end -->
+            </div>
+            <div class="footer-contact">
+                <h4>İletişim</h4><a href="#">info@oyuncuoluyorum.com</a>
+                <p style="font-size:14px;">19 Mayıs Mh. Mercan Sk. No:4 Kadıköy İstanbul</p>
+                <div class="sosyal-a"><a href="https://www.facebook.com/oyuncuoluyorum" class="face" target="_blank"></a><a href="https://www.youtube.com/oyuncuoluyorum" class="youtube" target="_blank"></a><a href="https://www.instagram.com/oyuncuoluyorum" class="ins" target="_blank"></a><a href="https://www.twitter.com/oyuncuoluyorum" class="twit" target="_blank"></a></div>
+            </div>
+        </div>
+    </footer>
+    <div class="copyr">
+        <p>© Copyright 2019 Tüm Hakları Saklıdır.</p><a href="~/Documents/Site-Kullanim-Sartlari.pdf" target="_blank">Site kullanım koşulları</a><a href="~/Documents/Garanti-Iade-Iptal-Bilgileri.pdf" target="_blank">Garanti İade İptal Bilgileri</a><a href="~/Documents/Kisisel-Verilerin-Korunmasi.pdf" target="_blank">Kişisel Verilerin Korunması</a><a href="~/Documents/Uyelik-Kosullari-ve-Gizlilik-Prensipleri.pdf" target="_blank">Üyelik Koşulları ve Gizlilik Prensipleri</a>
+        <a href="~/Documents/Güvenlik ve Gizlilik Politikası.pdf" target="_blank">Güvenlik ve Gizlilik Politikası</a>
+        <a href="~/Contact/Index">İletişim</a>
+    </div>
+    <div class="copyr">
+        <img style="margin-bottom:20px" src="~/Content/img/payment.png" />
+    </div>
+    @Html.Partial("Partial/CreditsModal")
+
+
+    @RenderSection("scripts", false)
+    <script>
+
+        const logo = document.querySelector(".scrolled");
+        const sectionOne = document.querySelector(".giris");
+        const sectionOneOptions = {
+            rootMargin: "-100px 0px 0px 0px"
+        };
+        const sectionOneObserver = new IntersectionObserver
+            (function (
+                entries,
+                sectionOneObserver
+            ) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        logo.setAttribute("id", "scrolled-img");
+                    } else {
+                        logo.setAttribute("id", "");
+                    }
+                });
+            }, sectionOneOptions);
+
+        sectionOneObserver.observe(sectionOne);
+
+    </script>
+</body>
+</html>
+<script>
+    if(@ViewBag.CreditStatus == 0)
+    {
+         $('#CreditsModal').modal('show');
+    }
+       
+</script>
+

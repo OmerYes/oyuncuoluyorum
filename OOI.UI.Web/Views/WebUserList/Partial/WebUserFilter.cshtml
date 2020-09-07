@@ -1,0 +1,21 @@
+﻿@model  List<WebUserListVM>
+   
+        @foreach (var item in Model)
+        {
+            <div class="aday">
+
+                <div class="aday-d">
+                    <img src="~/Content/WebUser/MainPhotos/@item.ProfilePic" alt="Alternate Text" />
+                    <div class="aday-isim">
+                        <h4>@item.Name</h4>
+                        <h5>@item.City</h5>
+                        <span>@item.Age</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="/Oyuncu-Listesi/Detay/@item.ID" class="link"></a>
+                    </div>
+                </div>
+
+            </div>
+        }
+

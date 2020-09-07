@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Projelerim";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model  List<ProjectVM>
+
+<div class="container-fluid CompanyProjectBlock">
+    <div class="purchases purchases-margins">
+        <div class="purchase-title"><h2>Projelerim</h2></div>
+
+        <div class="table-responsive">
+            <table class="table table-striped text-center">
+                <thead class="thead" id="no-hover">
+                    <tr>
+                        <th scope="col" class="purchases-id">Proje Adı</th>
+                        <th scope="col">Başlangıç Tarihi</th>
+                        <th scope="col">Bitiş Tarihi</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">İşlem</th>
+                        <th scope="col">İşlem</th>
+                        <th scope="col">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr id="p_@item.ID">
+                        <td class="purchases-id">@item.Title</td>
+                        <td>@item.StartDateString</td>
+                        <td>@item.EndDateString</td>
+                        <td>@item.CategoryName</td>
+                        <td class="deleteproject" id="@item.ID"><i title="Sil" class="fas fa-trash-alt"></i></td>
+                        <td class="deleteproject"><a href="/FirmProjects/ManageProject/@item.ID">Başvuran ve Eklenenleri Gör</a></td>
+                        <td><i title="İndir" class="fas fa-file-pdf"></i></td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(".deleteproject").click(function () {
+        var id = $(this).attr("id");
+
+        $.ajax({
+            url: "/SiteProject/Delete/" + id,
+            success: function () {
+                $("#p_" + id).fadeOut();
+            }
+        })
+    })
+</script>

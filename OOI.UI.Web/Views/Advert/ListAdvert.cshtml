@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "İlanlarım";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@model  List<AdvertVM>
+
+<div class="container CompanyProjectBlock">
+    <div class="purchases purchases-margins">
+        <div class="purchase-title"><h2>İlanlarım</h2></div>
+
+        <div class="table-responsive-lg">
+            <table class="table table-striped text-center">
+                <thead class="thead" id="no-hover">
+                    <tr>
+                        <th scope="col" class="purchases-id">İlan Adı</th>
+                        <th scope="col">Başlangıç Tarihi</th>
+                        <th scope="col">İlan Telefon Numarası</th>
+                        <th scope="col">İşlem</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr id="p_@item.ID">
+                        <td class="purchases-id">@item.Name</td>
+                        <td>@item.StartDateString</td>
+                        <td>@item.AdvertPhone</td>
+                        <td class="deleteproject" id="@item.ID"><i title="Sil" class="fas fa-trash-alt"></i></td>
+                        
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(".deleteproject").click(function () {
+        var id = $(this).attr("id");
+
+        $.ajax({
+            url: "/Advert/Delete/" + id,
+            success: function () {
+                $("#p_" + id).fadeOut();
+            }
+        })
+    })
+</script>

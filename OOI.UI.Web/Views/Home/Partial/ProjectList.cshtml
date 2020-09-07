@@ -1,0 +1,24 @@
+﻿@model HomeVM
+<section>
+    <div class="baslik-a">
+        <h2>Proje ilanları</h2><h5>
+            Sunduğumuz zengin içerik ve tümüyle kişiye özel olan bilgi gizliliğini ön planda tutan yapısı
+            ile yeni yüzlerin keşfedilmesine olanak sağlayacak Türkiye’nin ilk ve tek online casting platformudur.
+        </h5>
+    </div>
+    <div class="flex-6">
+        @foreach (var item in Model.Projects)
+        {
+            <div class="d-lg-flex d-md-block d-sm-block "> 
+                <div class="castingimg"><img src="/Content/Projects/MainPhotos/@item.MainPhoto" alt="" /></div>
+                <div class="castingtext">
+                    <h4>@item.Title</h4> <p>
+                        @item.Description
+                    </p> 
+                    @*<a href="/SiteProject/ProjectDetail/@item.ID" class="detay">Detay</a>*@
+                </div>
+
+            </div>
+        }
+    </div>
+</section>

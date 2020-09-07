@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Oyuncu Listesi";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model  List<WebUserListVM>
+
+<div class="giris form-f">
+    <h4> @ViewBag.Title</h4>
+</div>
+
+<div class="aside-page">
+    @Html.Partial("Partial/Filter", Model)
+    <section id="userList" class="adaylar filtre-a">
+        
+        @foreach (var item in Model)
+        {
+            <div class="aday">
+
+                <div class="aday-d">
+                    <img src="~/Content/WebUser/MainPhotos/@item.ProfilePic" alt="Alternate Text" />
+                    <div class="aday-isim">
+                        <h4>@item.Name</h4>
+                        <h5>@item.City</h5>
+                        <span>@item.Age</span>
+                    </div>
+                    <div class="aday-bag">
+                        <a href="/Oyuncu-Listesi/Detay/@item.ID" class="link"></a>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+    </section>
+</div>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "AddBlog";
+    Layout = "~/Areas/Admin/Views/Shared/AdminUserLayoutPage.cshtml";
+
+}
+
+@model OOI.UI.Web.Areas.Admin.Models.VM.BlogVM
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Blog Ekle</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @using (Html.BeginForm("AddBlog", "Blog", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.ID)
+                    <div class="form-group">
+                        <label>Başlık</label>
+                        @Html.TextBoxFor(x => x.Title, new { @type = "text", @class = "form-control", @id = "", @placeholder = "" })
+                        @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        @Html.TextBoxFor(x => x.Description, new { @type = "text", @class = "form-control", @id = "", @placeholder = "" })
+                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        @Html.DropDownList("CategoryID", Model.drpBlogCategoryList, "Kategori Seçiniz", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-outline-primary">Ekle</button>
+                    </div>
+                }
+            </table>
+        </div>
+    </div>
+</div>

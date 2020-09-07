@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+@model CompanyVM
+<script src="~/Scripts/mask/jquery.inputmask.bundle.js"></script>
+
+<form action="Update" enctype="multipart/form-data" method="post">
+    @Html.Hidden("ID");
+    <div class="container firmaprofilduzenleme">
+        <div class="container firmaprofilbaslik">
+            <h2>Firma Profil Düzenleme</h2>
+        </div>
+        <div class="d-lg-flex d-md-flex d-sm-block container">
+            <div class="firmaprofilimage ">
+                @if (Model.LogoPath == null)
+                {
+                    <img src="~/Content/img/empty.jpg" alt="Alternate Text" id="sitecompanylogo" />
+                }
+                else
+                {
+                <img src="~/Content/SiteCompany/Logo/@Model.LogoPath" id="sitecompanylogo"/>
+                }
+                <div class="fileUpload">
+                    <div class="clear"></div>
+                    <input accept="image/jpeg,image/jpg,image/png,image/JPEG,image/JPG" id="mainfile" name="logo" type="file" aria-invalid="true">
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="firmaprofiltext">
+                <div>
+                    <label>Firma Adı</label>
+                    <input class="form-control" type="text" name="CompanyName" value="@Model.CompanyName" />
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email" value="@Model.Email" />
+                </div>
+                <div>
+                    <label class="telefon">Telefon</label>
+                    <input class="form-control" type="text" name="phone" id="phone" value="@Model.Phone" />
+                </div>
+                <div>
+                    <label>Adres</label>
+                    <textarea name="Address" class="form-control">@Model.Address</textarea>
+                </div>
+            </div>
+        </div>
+        <div class=" firmaprofilbuton row">
+            <div class="col-auto mr-auto">
+                <button class="ozel">kaydet</button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-warning">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $("#phone").inputmask({ "mask": "(999) 999-9999" });
+</script>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#sitecompanylogo').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#mainfile").change(function () {
+        readURL(this);
+    });
+</script>
